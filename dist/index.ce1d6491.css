@@ -1,5 +1,20 @@
-.scene-steal {
-  color: #4682b4;
+.movie-card {
+  border: 1px solid #4cf;
+  margin: 4px;
+  padding: 10px;
+}
+
+.movie-card:hover {
+  cursor: pointer;
+}
+
+.director {
+  color: #4cf;
+}
+
+.director:hover {
+  cursor: pointer;
+  color: #fa2;
 }
 
 /*# sourceMappingURL=index.ce1d6491.css.map */

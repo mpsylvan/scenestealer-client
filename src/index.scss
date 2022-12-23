@@ -1,5 +1,18 @@
-$color: steelblue;
+$color: #4cf;
 
-.scene-steal{
+.movie-card{
+    padding: 10px;
+    margin: 4px;
+    border: 1px solid $color;
+}
+
+.movie-card:hover{
+    cursor: pointer;
+}
+.director{
     color: $color;
+}
+.director:hover{
+    cursor: pointer;
+    color: #fa2;
 }
