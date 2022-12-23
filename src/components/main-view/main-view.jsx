@@ -12,7 +12,7 @@ export const MainView = ()=>{
     
      
     ]);
-    const [selectedDirector, setSelectedDirector] =useState(null);
+    const [selectedDirector, setSelectedDirector] = useState(null);
     const [selectedMovie, setSelectedMovie] = useState(null);
 
     if(selectedDirector){
