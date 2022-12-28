@@ -27269,6 +27269,7 @@ const MainView = ()=>{
     const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null);
     (0, _react.useEffect)(()=>{
         fetch("https://scenestealer.herokuapp.com/movies").then((response)=>response.json()).then((data)=>{
+            console.log(data[0]);
             const movieData = data.map((movie)=>{
                 return {
                     key: movie._id,
@@ -27291,7 +27292,7 @@ const MainView = ()=>{
         onBackClick: ()=>setSelectedDirector(null)
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 36,
+        lineNumber: 37,
         columnNumber: 15
     }, undefined);
     if (selectedMovie) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieView.MovieView), {
@@ -27300,7 +27301,7 @@ const MainView = ()=>{
         onDirectorClick: ()=>setSelectedDirector(true)
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 40,
+        lineNumber: 41,
         columnNumber: 16
     }, undefined);
     // if no movies in the moves state variable, display generic message. 
@@ -27308,21 +27309,21 @@ const MainView = ()=>{
         children: "No Movies to display!"
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 50,
+        lineNumber: 51,
         columnNumber: 16
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: movies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
                 movie: movie,
                 onMovieClick: (movie)=>setSelectedMovie(movie)
-            }, movie.id, false, {
+            }, movie.key, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 58,
+                lineNumber: 59,
                 columnNumber: 14
             }, undefined))
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 56,
+        lineNumber: 57,
         columnNumber: 9
     }, undefined);
 };
@@ -27387,12 +27388,12 @@ const MovieCard = ({ movie , onMovieClick  })=>{
     }, void 0, false, {
         fileName: "src/components/movie-card/movie-card.jsx",
         lineNumber: 4,
-        columnNumber: 12
+        columnNumber: 13
     }, undefined);
 };
 _c = MovieCard;
 MovieCard.propTypes = {
-    movie: (0, _propTypesDefault.default).exact({
+    movie: (0, _propTypesDefault.default).shape({
         title: (0, _propTypesDefault.default).string.isRequired
     }),
     onMovieClick: (0, _propTypesDefault.default).func.isRequired

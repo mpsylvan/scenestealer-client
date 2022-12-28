@@ -14,6 +14,7 @@ export const MainView = ()=>{
         fetch("https://scenestealer.herokuapp.com/movies")
             .then((response) => response.json())
             .then((data)=>{
+                console.log(data[0])
                 const movieData = data.map(movie =>{
                     return {
                         key : movie._id,
@@ -55,7 +56,7 @@ export const MainView = ()=>{
     return (
         <div>
             {movies.map((movie) => 
-            (<MovieCard key={movie.id} 
+            (<MovieCard key={movie.key} 
                 movie={movie} 
                 onMovieClick = {(movie)=> setSelectedMovie(movie)}/>
         ))}
