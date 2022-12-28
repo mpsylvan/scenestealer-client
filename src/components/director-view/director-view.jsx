@@ -22,9 +22,9 @@ export const DirectorView = ({movie, onBackClick})=>{
 DirectorView.propTypes = {
     movie: PropTypes.shape({
         director: PropTypes.shape({
-            name: PropTypes.string.isRequired,
-            bio : PropTypes.string.isRequired,
-            nationality: PropTypes.string.isRequired,
+            Name: PropTypes.string.isRequired,
+            Bio : PropTypes.string.isRequired,
+            Nationality: PropTypes.string.isRequired,
         }).isRequired,
     }) , 
     onBackClick: PropTypes.func.isRequired,

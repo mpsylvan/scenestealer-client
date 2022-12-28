@@ -14,7 +14,6 @@ export const MainView = ()=>{
         fetch("https://scenestealer.herokuapp.com/movies")
             .then((response) => response.json())
             .then((data)=>{
-                console.log(data[0])
                 const movieData = data.map(movie =>{
                     return {
                         key : movie._id,
@@ -52,7 +51,7 @@ export const MainView = ()=>{
     }
     
     
-
+    // finally, MainView renders each movie object as a MovieCard
     return (
         <div>
             {movies.map((movie) => 

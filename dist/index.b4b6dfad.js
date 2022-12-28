@@ -27269,7 +27269,6 @@ const MainView = ()=>{
     const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null);
     (0, _react.useEffect)(()=>{
         fetch("https://scenestealer.herokuapp.com/movies").then((response)=>response.json()).then((data)=>{
-            console.log(data[0]);
             const movieData = data.map((movie)=>{
                 return {
                     key: movie._id,
@@ -27292,7 +27291,7 @@ const MainView = ()=>{
         onBackClick: ()=>setSelectedDirector(null)
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 37,
+        lineNumber: 36,
         columnNumber: 15
     }, undefined);
     if (selectedMovie) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieView.MovieView), {
@@ -27301,7 +27300,7 @@ const MainView = ()=>{
         onDirectorClick: ()=>setSelectedDirector(true)
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 41,
+        lineNumber: 40,
         columnNumber: 16
     }, undefined);
     // if no movies in the moves state variable, display generic message. 
@@ -27309,21 +27308,22 @@ const MainView = ()=>{
         children: "No Movies to display!"
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 51,
+        lineNumber: 50,
         columnNumber: 16
     }, undefined);
+    // finally, MainView renders each movie object as a MovieCard
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: movies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
                 movie: movie,
                 onMovieClick: (movie)=>setSelectedMovie(movie)
             }, movie.key, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 59,
+                lineNumber: 58,
                 columnNumber: 14
             }, undefined))
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 57,
+        lineNumber: 56,
         columnNumber: 9
     }, undefined);
 };
@@ -28322,7 +28322,7 @@ MovieView.propTypes = {
         director: (0, _propTypesDefault.default).shape({
             Name: (0, _propTypesDefault.default).string.isRequired,
             Bio: (0, _propTypesDefault.default).string.isRequired,
-            NNationality: (0, _propTypesDefault.default).string.isRequired
+            Nationality: (0, _propTypesDefault.default).string.isRequired
         }),
         releaseYear: (0, _propTypesDefault.default).number.isRequired,
         desc: (0, _propTypesDefault.default).string.isRequired,
@@ -28428,9 +28428,9 @@ _c = DirectorView;
 DirectorView.propTypes = {
     movie: (0, _propTypesDefault.default).shape({
         director: (0, _propTypesDefault.default).shape({
-            name: (0, _propTypesDefault.default).string.isRequired,
-            bio: (0, _propTypesDefault.default).string.isRequired,
-            nationality: (0, _propTypesDefault.default).string.isRequired
+            Name: (0, _propTypesDefault.default).string.isRequired,
+            Bio: (0, _propTypesDefault.default).string.isRequired,
+            Nationality: (0, _propTypesDefault.default).string.isRequired
         }).isRequired
     }),
     onBackClick: (0, _propTypesDefault.default).func.isRequired
