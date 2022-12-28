@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-export const DirectorView = ({movie})=>{
+export const DirectorView = ({movie, onBackClick})=>{
     return(
         <div>
             <h3>{movie.director.Name}</h3>

@@ -33,7 +33,7 @@ export const MainView = ()=>{
     })
 
     if(selectedDirector){
-        return<DirectorView movie={selectedMovie} onBookClick={()=>setSelectedDirector(null)}/>
+        return<DirectorView movie={selectedMovie} onBackClick={()=>setSelectedDirector(null)}/>
     }
 
     if(selectedMovie){

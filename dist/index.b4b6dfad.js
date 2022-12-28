@@ -27288,7 +27288,7 @@ const MainView = ()=>{
     });
     if (selectedDirector) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _directorView.DirectorView), {
         movie: selectedMovie,
-        onBookClick: ()=>setSelectedDirector(null)
+        onBackClick: ()=>setSelectedDirector(null)
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
         lineNumber: 36,
@@ -28351,7 +28351,7 @@ parcelHelpers.export(exports, "DirectorView", ()=>DirectorView);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _propTypes = require("prop-types");
 var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
-const DirectorView = ({ movie  })=>{
+const DirectorView = ({ movie , onBackClick  })=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
