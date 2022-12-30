@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 import { DirectorView } from "../director-view/director-view";
-import PropTypes from 'prop-types';
+
 
 
 export const MainView = ()=>{
@@ -33,14 +33,46 @@ export const MainView = ()=>{
     })
 
     if(selectedDirector){
-        return<DirectorView movie={selectedMovie} onBackClick={()=>setSelectedDirector(null)}/>
+        let directedArr =  movies.filter((movie) => movie.director.Name === selectedMovie.director.Name && movie.title !== selectedMovie.title)
+        
+        return(
+            <div>
+                <DirectorView 
+                    movie={selectedMovie} 
+                    onBackClick={()=>setSelectedDirector(null)}
+                />
+                <hr />
+                <h3> Other films directed by {selectedMovie.director.Name}</h3>
+                {directedArr.map((movie) => 
+                    (<MovieCard key={movie.key} 
+                    movie={movie} 
+                    onMovieClick = {(movie)=> setSelectedMovie(movie)}/>
+                ))}
+            </div>
+        )
     }
 
     if(selectedMovie){
-        return <MovieView 
-        movie={selectedMovie}   
-        onBackClick={()=>setSelectedMovie(null)}
-        onDirectorClick={()=>setSelectedDirector(true)}/>
+        let genreMatchArr = movies.filter((movie) => {
+            return movie.genre.Name === selectedMovie.genre.Name && movie.title !== selectedMovie.title  
+        })
+        return  (
+            <div>
+                <MovieView 
+                movie={selectedMovie}   
+                onBackClick={()=>setSelectedMovie(null)}
+                onDirectorClick={()=>setSelectedDirector(true)}/>
+                <hr />
+                <h2>Similar Movies</h2>
+                {genreMatchArr.map((movie) => 
+                    (<MovieCard 
+                        key={movie.key} 
+                        movie={movie} 
+                        onMovieClick = {(movie)=> setSelectedMovie(movie)}/>)
+            )}
+            </div>
+        ) 
+       
         
      
     }
