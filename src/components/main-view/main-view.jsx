@@ -96,7 +96,8 @@ export const MainView = ()=>{
             (<MovieCard key={movie.key} 
                 movie={movie} 
                 onMovieClick = {(movie)=> setSelectedMovie(movie)}/>
-        ))}
+            ))}
+            <button onClick={()=>{setUser(null)}}> Logout </button>
         </div>
     );
      

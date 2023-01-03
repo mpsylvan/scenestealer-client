@@ -16,7 +16,7 @@ export const LoginView = ({onLoggedIn}) => {
         //     secret: password //K39eKYhPMV9DDWhJ
         // };
 
-        const movieData = {
+        const data = {
             Username: username,
             Password: password
         }
@@ -35,39 +35,40 @@ export const LoginView = ({onLoggedIn}) => {
 
         fetch("https://scenestealer.herokuapp.com/login", {
             method: "POST",
-            body: JSON.stringify(movieData)
+            body: JSON.stringify(data)
         }).then((response)=>{
             if(response.ok){
                 onLoggedIn(username);
             }else{
-                onLoggedIn(username);
+                alert('movie login failed')
+                // onLoggedIn(username);
             }
         });
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <label>
-        Username:
+        <label>
+            Username:
+        </label>
         <input 
-        type="text"
-        value = {username}
-        onChange = {(e)=>setUsername(e.target.value)}
-        required
-         />
-      </label>
-      <label>
-        Password:
+            type="text"
+            value = {username}
+            onChange = {(e)=>setUsername(e.target.value)}
+            required
+            />
+        <label>
+            Password:
+        </label>
         <input 
-        type="password"
-        value = {password}
-        onChange = {(e)=>setPassword(e.target.value)}
-        required
-         />
-      </label>
-      <button type="submit">
-        Submit
-      </button>
+            type="password"
+            value = {password}
+            onChange = {(e)=>setPassword(e.target.value)}
+            required
+            />
+        <button type="submit">
+            Submit
+        </button>
     </form>
   );
 };
