@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 import { DirectorView } from "../director-view/director-view";
+import {LoginView} from "../login-view/login-view"
 
 
 
@@ -9,6 +10,7 @@ export const MainView = ()=>{
     const[movies, setMovies] = useState([]);
     const [selectedDirector, setSelectedDirector] = useState(null);
     const [selectedMovie, setSelectedMovie] = useState(null);
+    const [user, setUser] = useState(null);
 
     useEffect(()=>{
         fetch("https://scenestealer.herokuapp.com/movies")
@@ -31,6 +33,10 @@ export const MainView = ()=>{
                 setMovies(movieData);
             })
     }, [])
+
+    if(!user){
+        return <LoginView onLoggedIn = {(user)=>setUser(user)}/>
+    }
 
     if(selectedDirector){
         let directedArr =  movies.filter((movie) => movie.director.Name === selectedMovie.director.Name && movie.title !== selectedMovie.title)
