@@ -30,7 +30,7 @@ export const MainView = ()=>{
                 });
                 setMovies(movieData);
             })
-    })
+    }, [])
 
     if(selectedDirector){
         let directedArr =  movies.filter((movie) => movie.director.Name === selectedMovie.director.Name && movie.title !== selectedMovie.title)

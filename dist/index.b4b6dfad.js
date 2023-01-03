@@ -27283,7 +27283,7 @@ const MainView = ()=>{
             });
             setMovies(movieData);
         });
-    });
+    }, []);
     if (selectedDirector) {
         let directedArr = movies.filter((movie)=>movie.director.Name === selectedMovie.director.Name && movie.title !== selectedMovie.title);
         return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
