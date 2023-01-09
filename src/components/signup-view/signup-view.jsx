@@ -27,10 +27,10 @@ export const SignupView = ({onLoggedIn})=>{
             }
         }).then((response)=>{
             if(response.ok){
-                console.log("200");
+                console.log("success");
                 // onLoggedIn(username);
             }else{
-                console.log("login fail")
+                console.log("signup fail")
                 // onLoggedIn(username);
             }
         })
