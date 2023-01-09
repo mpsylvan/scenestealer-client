@@ -8,9 +8,10 @@ import { SignupView } from "../signup-view/signup-view";
 
 
 export const MainView = ()=>{
-    // 
+    // uses local storage to access user/token items set via a successful login and stores them as variables to persist auth state. 
     const storedUser = JSON.parse(localStorage.getItem("user"));
     const storedToken = localStorage.getItem("token");
+    // state variables and their setters used for persisting authentication and presenting movie data and click states. 
     const [user, setUser] = useState(storedUser? storedUser: null);
     const [token, setToken] = useState(storedToken? storedToken: null);
     const[movies, setMovies] = useState([]);
