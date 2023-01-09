@@ -28,8 +28,11 @@ export const SignupView = ({onLoggedIn})=>{
         }).then((response)=>{
             if(response.ok){
                 console.log("success");
+                alert("signup successful");
+                window.location.reload();
                 // onLoggedIn(username);
             }else{
+                alert("singnup failed")
                 console.log("signup fail")
                 // onLoggedIn(username);
             }
