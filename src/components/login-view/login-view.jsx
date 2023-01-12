@@ -21,25 +21,23 @@ export const LoginView = ({onLoggedIn}) => {
         fetch("https://scenestealer.herokuapp.com/login", {
             method: "POST",
             headers: {
-                'Content-Type': 'appication/json'
+
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify(data),
-        }).then((response)=>response.json())
-          .then((data)=>{
-            console.log(data)
+        }).then((response)=> response.json())
+        .then((data)=>{
+            console.log('Login Response :', data);
             if(data.user){
-                localStorage.setItem("user", JSON.stringify(data.user))
-                localStorage.setItem("token", JSON.stringify(data.token))
                 onLoggedIn(data.user, data.token);
             }else{
-                alert('no such user');
+                alert('could not find such a user')
             }
-          })
-            .catch((e)=>{
-                console.log(e);
-                alert('something went wrong');
-            })
-       
+        }).catch((e)=>{
+            console.log(e);
+            alert('an error occured')
+        })
+
         
   };
 

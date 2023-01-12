@@ -9,23 +9,22 @@ import { SignupView } from "../signup-view/signup-view";
 
 export const MainView = ()=>{
     // uses local storage to access user/token items set via a successful login and stores them as variables to persist auth state. 
-    const storedUser = JSON.parse(localStorage.getItem("user"));
-    const storedToken = localStorage.getItem("token");
+    // const storedUser = JSON.parse(localStorage.getItem("user"));
+    // const storedToken = localStorage.getItem("token");
     // state variables and their setters used for persisting authentication and presenting movie data and click states. 
-    const [user, setUser] = useState(storedUser? storedUser: null);
-    const [token, setToken] = useState(storedToken? storedToken: null);
+    const [user, setUser] = useState(null);
+    const [token, setToken] = useState(null);
     const[movies, setMovies] = useState([]);
     const [selectedMovie, setSelectedMovie] = useState(null);
     const [selectedDirector, setSelectedDirector] = useState(null);
 
     useEffect(()=>{
         if(!token){
-            return
+            return;
         }
-        fetch("https://scenestealer.herokuapp.com/movies",{
-            headers: {Authorization: `Bearer: ${token}`}
-        } 
-        )
+        fetch("https://scenestealer.herokuapp.com/movies", {
+            headers: {Authorization: `Bearer ${token}`}
+        })
             .then((response) => response.json())
             .then((data)=>{
                 const movieData = data.map(movie =>{
@@ -118,7 +117,7 @@ export const MainView = ()=>{
                 movie={movie} 
                 onMovieClick = {(movie)=> setSelectedMovie(movie)}/>
             ))}
-            <button onClick={()=>{setUser(null); setToken(null)}}> Logout </button>
+            <button onClick={()=>{setUser(null); setToken(null);}}> Logout </button>
         </div>
     );
      
