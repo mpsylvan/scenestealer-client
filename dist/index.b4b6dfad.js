@@ -27264,12 +27264,12 @@ var _signupView = require("../signup-view/signup-view");
 var _s = $RefreshSig$();
 const MainView = ()=>{
     _s();
-    // uses local storage to access user/token items set via a successful login and stores them as variables to persist auth state. 
-    // const storedUser = JSON.parse(localStorage.getItem("user"));
-    // const storedToken = localStorage.getItem("token");
-    // state variables and their setters used for persisting authentication and presenting movie data and click states. 
-    const [user, setUser] = (0, _react.useState)(null);
-    const [token, setToken] = (0, _react.useState)(null);
+    //uses local storage to access user/token items set via a successful login and stores them as variables to persist auth state. 
+    const storedUser = JSON.parse(localStorage.getItem("user"));
+    const storedToken = localStorage.getItem("token");
+    //state variables and their setters used for persisting authentication and presenting movie data and click states. 
+    const [user, setUser] = (0, _react.useState)(storedUser ? storedUser : null);
+    const [token, setToken] = (0, _react.useState)(storedToken ? storedToken : null);
     const [movies, setMovies] = (0, _react.useState)([]);
     const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null);
     const [selectedDirector, setSelectedDirector] = (0, _react.useState)(null);
@@ -27427,6 +27427,7 @@ const MainView = ()=>{
                 onClick: ()=>{
                     setUser(null);
                     setToken(null);
+                    localStorage.clear();
                 },
                 children: " Logout "
             }, void 0, false, {
@@ -27441,7 +27442,7 @@ const MainView = ()=>{
         columnNumber: 9
     }, undefined);
 };
-_s(MainView, "m1t8giY3KXKe6llQkoyQpPoX96Q=");
+_s(MainView, "aeTdMKR+TmJxwisA68EZd9dN4A4=");
 _c = MainView;
 var _c;
 $RefreshReg$(_c, "MainView");
@@ -28617,8 +28618,11 @@ const LoginView = ({ onLoggedIn  })=>{
             body: JSON.stringify(data)
         }).then((response)=>response.json()).then((data)=>{
             console.log("Login Response :", data);
-            if (data.user) onLoggedIn(data.user, data.token);
-            else alert("could not find such a user");
+            if (data.user) {
+                localStorage.setItem("user", JSON.stringify(data.user));
+                localStorage.setItem("token", data.token);
+                onLoggedIn(data.user, data.token);
+            } else alert("could not find such a user");
         }).catch((e)=>{
             console.log(e);
             alert("an error occured");
@@ -28630,7 +28634,7 @@ const LoginView = ({ onLoggedIn  })=>{
                 children: "Login here: "
             }, void 0, false, {
                 fileName: "src/components/login-view/login-view.jsx",
-                lineNumber: 49,
+                lineNumber: 50,
                 columnNumber: 9
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
@@ -28640,7 +28644,7 @@ const LoginView = ({ onLoggedIn  })=>{
                         children: "Username:"
                     }, void 0, false, {
                         fileName: "src/components/login-view/login-view.jsx",
-                        lineNumber: 51,
+                        lineNumber: 52,
                         columnNumber: 13
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
@@ -28652,14 +28656,14 @@ const LoginView = ({ onLoggedIn  })=>{
                         required: true
                     }, void 0, false, {
                         fileName: "src/components/login-view/login-view.jsx",
-                        lineNumber: 54,
+                        lineNumber: 55,
                         columnNumber: 13
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
                         children: "Password:"
                     }, void 0, false, {
                         fileName: "src/components/login-view/login-view.jsx",
-                        lineNumber: 60,
+                        lineNumber: 61,
                         columnNumber: 13
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
@@ -28671,7 +28675,7 @@ const LoginView = ({ onLoggedIn  })=>{
                         required: true
                     }, void 0, false, {
                         fileName: "src/components/login-view/login-view.jsx",
-                        lineNumber: 63,
+                        lineNumber: 64,
                         columnNumber: 13
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -28679,13 +28683,13 @@ const LoginView = ({ onLoggedIn  })=>{
                         children: "Submit"
                     }, void 0, false, {
                         fileName: "src/components/login-view/login-view.jsx",
-                        lineNumber: 69,
+                        lineNumber: 70,
                         columnNumber: 13
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/login-view/login-view.jsx",
-                lineNumber: 50,
+                lineNumber: 51,
                 columnNumber: 9
             }, undefined)
         ]
