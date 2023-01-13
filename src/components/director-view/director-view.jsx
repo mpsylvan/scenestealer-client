@@ -1,22 +1,21 @@
 import PropTypes from 'prop-types';
+import {Button, Card} from 'react-bootstrap';
+
 
 export const DirectorView = ({movie, onBackClick})=>{
     return(
-        <div>
-            <h3>{movie.director.Name}</h3>
-            <div>
-                <span>bio: </span>
-                <span>{movie.director.Bio}</span>
-            </div>
-            <div>
-                <span>nationality: </span>
-                <span>{movie.director.Nationality}</span>
-            </div>
-            <button onClick = {onBackClick}>
-                back to {movie.title}
-            </button>
-        </div>
+        <Card className="mt-2" style={{width:"20rem"}}>
+            <Card.Body style={{borderRadius:"10px"}}>
+                <Card.Title>
+                    {movie.director.Name}
+                </Card.Title>
+                 <Card.Text> Bio: {movie.director.Bio}</Card.Text>
+                <Card.Text>Nationality: {movie.director.Nationality}</Card.Text>
+            </Card.Body>
+            <Button className="mt-1" onClick={onBackClick}>Back to {movie.title}</Button>
+        </Card>
     )  
+                
 }
 
 DirectorView.propTypes = {
