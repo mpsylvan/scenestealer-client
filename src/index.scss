@@ -1,16 +1,17 @@
-$body-bg: #eee;
+$body-bg: white;
+$primary: #98dd3d;
+$color: #91dde7;
 
 @import '~bootstrap/scss/bootstrap.scss';
 
-$color: #4cf;
 
-.movie-card{
-    padding: 10px;
-    margin: 4px;
-    border: 1px solid $color;
+
+.card-body{
+    color: white;
+    background-color: #248;
 }
 
-.movie-card:hover{
+.card-body:hover{
     cursor: pointer;
 }
 .director{
@@ -24,4 +25,12 @@ $color: #4cf;
 .form-group{
     margin-top: 10px;
     margin-bottom: 10px;
+}
+
+.form-control{
+    background-color: white;
+}
+
+.form-control:active{
+    background-color: white;
 }
