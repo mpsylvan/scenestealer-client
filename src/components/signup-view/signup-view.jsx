@@ -1,5 +1,7 @@
 import React from 'react';
 import { useState } from "react";
+import {Form} from 'react-bootstrap';
+import {Button} from 'react-bootstrap';
 
 
 export const SignupView = ({onLoggedIn})=>{
@@ -41,40 +43,49 @@ export const SignupView = ({onLoggedIn})=>{
     };
 
     return(
-        <>
-            <h3>Sign up here: </h3>
-            <form onSubmit = {handleSubmit}>
-                <label>Email:  </label>
-                <input 
-                    type="email" 
-                    value = {email}
-                    onChange = {(e)=>{setEmail(e.target.value)}}
-                />
-                
-                <label>Username: </label>
-                <input 
-                    type="text"
+        <Form onSubmit = {handleSubmit}>
+            <h3>Sign up here </h3>
+            <Form.Group className='form-group'>
+                <Form.Label>
+                    Username: 
+                </Form.Label>
+                <Form.Control
+                    type = "text"
                     value = {username}
-                    onChange = {(e)=>{setUsername(e.target.value)}}
-                    
+                    onChange = {(e)=>{setUsername(e.target.value)}} 
                 />
-                
-                <label> Password: </label>
-                <input 
-                    type="password"
+            </Form.Group>
+            <Form.Group className='form-group'>
+                <Form.Label>
+                    Password: 
+                </Form.Label>
+                <Form.Control
+                    type = "password"
                     value = {password}
                     onChange = {(e)=>{setPassword(e.target.value)}} 
                 />
-                
-                <label> Birthday: </label>
-                <input 
-                    type="date"
+            </Form.Group >
+            <Form.Group className='form-group' >
+                <Form.Label>
+                    Email: 
+                </Form.Label>
+                <Form.Control
+                    type = "text"
+                    value = {email}
+                    onChange = {(e)=>{setEmail(e.target.value)}} 
+                />
+            </Form.Group>
+            <Form.Group className='form-group'>
+                <Form.Label>
+                    Birthday: 
+                </Form.Label>
+                <Form.Control
+                    type = "date"
                     value = {birthdate}
                     onChange = {(e)=>{setBirthdate(e.target.value)}} 
                 />
-                <button type="submit"> Submit </button>
-                </form>
-            
-        </>
+            </Form.Group>
+            <Button variant ="info" type="submit"> Submit </Button>
+        </Form>
     )
 }

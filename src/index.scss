@@ -1,12 +1,20 @@
-$color: #4cf;
+@import url('https://fonts.googleapis.com/css2?family=Karma:wght@400;700&family=Roboto&family=Yanone+Kaffeesatz:wght@400;700&display=swap');
 
-.movie-card{
-    padding: 10px;
-    margin: 4px;
-    border: 1px solid $color;
+$body-bg: white;
+$primary: #98dd3d;
+$color: #91dde7;
+$kaffeesatz: 'Yanone Kaffeesatz',sans-serif;
+@import '~bootstrap/scss/bootstrap.scss';
+
+
+
+.card-body{
+    color: white;
+    background-color: #248;
+    font-family: $kaffeesatz;
 }
 
-.movie-card:hover{
+.card-body:hover{
     cursor: pointer;
 }
 .director{
@@ -15,4 +23,17 @@ $color: #4cf;
 .director:hover{
     cursor: pointer;
     color: #fa2;
+}
+
+.form-group{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.form-control{
+    background-color: white;
+}
+
+.form-control:active{
+    background-color: white;
 }
