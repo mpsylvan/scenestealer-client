@@ -23,10 +23,10 @@ export const SignupView = ({onLoggedIn})=>{
 
         fetch("https://scenestealer.herokuapp.com/users", {
             method: "POST", 
-            body: JSON.stringify(data),
             headers: {
                 "Content-Type": "application/json"
-            }
+            },
+            body: JSON.stringify(data),
         }).then((response)=>{
             if(response.ok){
                 console.log("success");

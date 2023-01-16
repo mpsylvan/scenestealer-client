@@ -22,6 +22,9 @@ export const LoginView = ({onLoggedIn}) => {
         
         fetch("https://scenestealer.herokuapp.com/login", {
             method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
             body: JSON.stringify(data)
         }).then((response)=>response.json())
           .then((data)=>{
