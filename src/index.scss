@@ -1,7 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Karma:wght@400;700&family=Roboto&family=Yanone+Kaffeesatz:wght@400;700&display=swap');
+
 $body-bg: white;
 $primary: #98dd3d;
 $color: #91dde7;
-
+$kaffeesatz: 'Yanone Kaffeesatz',sans-serif;
 @import '~bootstrap/scss/bootstrap.scss';
 
 
@@ -9,6 +11,7 @@ $color: #91dde7;
 .card-body{
     color: white;
     background-color: #248;
+    font-family: $kaffeesatz;
 }
 
 .card-body:hover{
