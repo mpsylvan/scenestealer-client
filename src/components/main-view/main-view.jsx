@@ -141,17 +141,3 @@ export const MainView = ()=>{
     };
     
     
-    // finally, MainView renders each movie object as a MovieCard
-    return (
-        <div>
-            {movies.map((movie) => 
-            (<MovieCard key={movie.key} 
-                movie={movie} 
-                onMovieClick = {(movie)=> setSelectedMovie(movie)}/>
-            ))}
-            <button onClick={()=>{setUser(null); setToken(null)}}> Logout </button>
-        </div>
-    );
-     
-
-};
