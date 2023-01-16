@@ -2,16 +2,29 @@ import { useState, useEffect } from "react";
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 import { DirectorView } from "../director-view/director-view";
+import {LoginView} from "../login-view/login-view"
+import { SignupView } from "../signup-view/signup-view";
 
 
 
 export const MainView = ()=>{
+    //uses local storage to access user/token items set via a successful login and stores them as variables to persist auth state. 
+    const storedUser = JSON.parse(localStorage.getItem("user"));
+    const storedToken = localStorage.getItem("token");
+    //state variables and their setters used for persisting authentication and presenting movie data and click states. 
+    const [user, setUser] = useState(storedUser ? storedUser: null);
+    const [token, setToken] = useState(storedToken? storedToken: null);
     const[movies, setMovies] = useState([]);
-    const [selectedDirector, setSelectedDirector] = useState(null);
     const [selectedMovie, setSelectedMovie] = useState(null);
+    const [selectedDirector, setSelectedDirector] = useState(null);
 
     useEffect(()=>{
-        fetch("https://scenestealer.herokuapp.com/movies")
+        if(!token){
+            return;
+        }
+        fetch("https://scenestealer.herokuapp.com/movies", {
+            headers: {Authorization: `Bearer ${token}`}
+        })
             .then((response) => response.json())
             .then((data)=>{
                 const movieData = data.map(movie =>{
@@ -30,9 +43,22 @@ export const MainView = ()=>{
                 });
                 setMovies(movieData);
             })
-    }, [])
+    }, [token])
+        
+    if(!user){
+        return (
+            <>
+                <LoginView  onLoggedIn = {(user, token)=>{
+                    setUser(user);
+                    setToken(token);
+                }}/>
+                <SignupView onLoggedIn = {(user)=>setUser(user)}/>
+            </>
+            )
+        }
 
     if(selectedDirector){
+        
         let directedArr =  movies.filter((movie) => movie.director.Name === selectedMovie.director.Name && movie.title !== selectedMovie.title)
         
         return(
@@ -90,7 +116,8 @@ export const MainView = ()=>{
             (<MovieCard key={movie.key} 
                 movie={movie} 
                 onMovieClick = {(movie)=> setSelectedMovie(movie)}/>
-        ))}
+            ))}
+            <button onClick={()=>{setUser(null); setToken(null); localStorage.clear();}}> Logout </button>
         </div>
     );
      
