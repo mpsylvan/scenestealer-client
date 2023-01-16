@@ -27276,11 +27276,7 @@ const MainView = ()=>{
     //uses local storage to access user/token items set via a successful login and stores them as variables to persist auth state. 
     const storedUser = JSON.parse(localStorage.getItem("user"));
     const storedToken = localStorage.getItem("token");
-<<<<<<< HEAD
-    //state variables and their setters used for persisting authentication and presenting movie data and click states. 
-=======
-    // state variables and their setters used for persisting authentication after a successful login and presenting movie data based on api requests and/or click events. 
->>>>>>> features
+    // state variables and their setters used for persisting authentication and presenting movie data and click states. 
     const [user, setUser] = (0, _react.useState)(storedUser ? storedUser : null);
     const [token, setToken] = (0, _react.useState)(storedToken ? storedToken : null);
     const [movies, setMovies] = (0, _react.useState)([]);
@@ -27344,141 +27340,6 @@ const MainView = ()=>{
                 ]
             }, void 0, true, {
                 fileName: "src/components/main-view/main-view.jsx",
-<<<<<<< HEAD
-                lineNumber: 51,
-                columnNumber: 17
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _signupView.SignupView), {
-                onLoggedIn: (user)=>setUser(user)
-            }, void 0, false, {
-                fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 55,
-                columnNumber: 17
-            }, undefined)
-        ]
-    }, void 0, true);
-    if (selectedDirector) {
-        let directedArr = movies.filter((movie)=>movie.director.Name === selectedMovie.director.Name && movie.title !== selectedMovie.title);
-        return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-            children: [
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _directorView.DirectorView), {
-                    movie: selectedMovie,
-                    onBackClick: ()=>setSelectedDirector(null)
-                }, void 0, false, {
-                    fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 66,
-                    columnNumber: 17
-                }, undefined),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("hr", {}, void 0, false, {
-                    fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 70,
-                    columnNumber: 17
-                }, undefined),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
-                    children: [
-                        " Other films directed by ",
-                        selectedMovie.director.Name
-                    ]
-                }, void 0, true, {
-                    fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 71,
-                    columnNumber: 17
-                }, undefined),
-                directedArr.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
-                        movie: movie,
-                        onMovieClick: (movie)=>setSelectedMovie(movie)
-                    }, movie.key, false, {
-                        fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 73,
-                        columnNumber: 22
-                    }, undefined))
-            ]
-        }, void 0, true, {
-            fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 65,
-            columnNumber: 13
-        }, undefined);
-    }
-    if (selectedMovie) {
-        let genreMatchArr = movies.filter((movie)=>{
-            return movie.genre.Name === selectedMovie.genre.Name && movie.title !== selectedMovie.title;
-        });
-        return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-            children: [
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieView.MovieView), {
-                    movie: selectedMovie,
-                    onBackClick: ()=>setSelectedMovie(null),
-                    onDirectorClick: ()=>setSelectedDirector(true)
-                }, void 0, false, {
-                    fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 87,
-                    columnNumber: 17
-                }, undefined),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("hr", {}, void 0, false, {
-                    fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 91,
-                    columnNumber: 17
-                }, undefined),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
-                    children: "Similar Movies"
-                }, void 0, false, {
-                    fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 92,
-                    columnNumber: 17
-                }, undefined),
-                genreMatchArr.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
-                        movie: movie,
-                        onMovieClick: (movie)=>setSelectedMovie(movie)
-                    }, movie.key, false, {
-                        fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 94,
-                        columnNumber: 22
-                    }, undefined))
-            ]
-        }, void 0, true, {
-            fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 86,
-            columnNumber: 13
-        }, undefined);
-    }
-    // if no movies in the moves state variable, display generic message. 
-    if (movies.length < 1) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        children: "No Movies to display!"
-    }, void 0, false, {
-        fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 108,
-        columnNumber: 16
-    }, undefined);
-    // finally, MainView renders each movie object as a MovieCard
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        children: [
-            movies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
-                    movie: movie,
-                    onMovieClick: (movie)=>setSelectedMovie(movie)
-                }, movie.key, false, {
-                    fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 116,
-                    columnNumber: 14
-                }, undefined)),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                onClick: ()=>{
-                    setUser(null);
-                    setToken(null);
-                    localStorage.clear();
-                },
-                children: " Logout "
-            }, void 0, false, {
-                fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 120,
-                columnNumber: 13
-            }, undefined)
-        ]
-    }, void 0, true, {
-        fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 114,
-        columnNumber: 9
-    }, undefined);
-=======
                 lineNumber: 62,
                 columnNumber: 21
             }, undefined) : selectedDirector ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
@@ -27667,9 +27528,8 @@ const MainView = ()=>{
             columnNumber: 13
         }, undefined)
     }, void 0, false);
->>>>>>> features
 };
-_s(MainView, "aeTdMKR+TmJxwisA68EZd9dN4A4=");
+_s(MainView, "BFhXLsIXEsYJ5XQ17wv3JzKsqrM=");
 _c = MainView;
 var _c;
 $RefreshReg$(_c, "MainView");
@@ -41526,11 +41386,7 @@ const LoginView = ({ onLoggedIn  })=>{
             },
             body: JSON.stringify(data)
         }).then((response)=>response.json()).then((data)=>{
-<<<<<<< HEAD
-            console.log("Login Response :", data);
-=======
-            console.log("Login Data:", data);
->>>>>>> features
+            console.log(data);
             if (data.user) {
                 localStorage.setItem("user", JSON.stringify(data.user));
                 localStorage.setItem("token", data.token);
@@ -41548,13 +41404,8 @@ const LoginView = ({ onLoggedIn  })=>{
                 children: "Login here "
             }, void 0, false, {
                 fileName: "src/components/login-view/login-view.jsx",
-<<<<<<< HEAD
-                lineNumber: 50,
-                columnNumber: 9
-=======
-                lineNumber: 51,
+                lineNumber: 52,
                 columnNumber: 13
->>>>>>> features
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Group, {
                 className: "form-group",
@@ -41563,13 +41414,8 @@ const LoginView = ({ onLoggedIn  })=>{
                         children: "Username:"
                     }, void 0, false, {
                         fileName: "src/components/login-view/login-view.jsx",
-<<<<<<< HEAD
-                        lineNumber: 52,
-                        columnNumber: 13
-=======
-                        lineNumber: 53,
+                        lineNumber: 54,
                         columnNumber: 17
->>>>>>> features
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
                         type: "text",
@@ -41579,49 +41425,13 @@ const LoginView = ({ onLoggedIn  })=>{
                         }
                     }, void 0, false, {
                         fileName: "src/components/login-view/login-view.jsx",
-<<<<<<< HEAD
-                        lineNumber: 55,
-                        columnNumber: 13
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
-                        children: "Password:"
-                    }, void 0, false, {
-                        fileName: "src/components/login-view/login-view.jsx",
-                        lineNumber: 61,
-                        columnNumber: 13
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                        type: "password",
-                        value: password,
-                        onChange: (e)=>{
-                            setPassword(e.target.value);
-                        },
-                        required: true
-                    }, void 0, false, {
-                        fileName: "src/components/login-view/login-view.jsx",
-                        lineNumber: 64,
-                        columnNumber: 13
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                        type: "submit",
-                        children: "Submit"
-                    }, void 0, false, {
-                        fileName: "src/components/login-view/login-view.jsx",
-                        lineNumber: 70,
-                        columnNumber: 13
-=======
-                        lineNumber: 56,
+                        lineNumber: 57,
                         columnNumber: 17
->>>>>>> features
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/login-view/login-view.jsx",
-<<<<<<< HEAD
-                lineNumber: 51,
-                columnNumber: 9
-=======
-                lineNumber: 52,
+                lineNumber: 53,
                 columnNumber: 13
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Group, {
@@ -41631,7 +41441,7 @@ const LoginView = ({ onLoggedIn  })=>{
                         children: "Password:"
                     }, void 0, false, {
                         fileName: "src/components/login-view/login-view.jsx",
-                        lineNumber: 63,
+                        lineNumber: 64,
                         columnNumber: 17
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
@@ -41642,13 +41452,13 @@ const LoginView = ({ onLoggedIn  })=>{
                         }
                     }, void 0, false, {
                         fileName: "src/components/login-view/login-view.jsx",
-                        lineNumber: 66,
+                        lineNumber: 67,
                         columnNumber: 17
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/login-view/login-view.jsx",
-                lineNumber: 62,
+                lineNumber: 63,
                 columnNumber: 13
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
@@ -41657,14 +41467,13 @@ const LoginView = ({ onLoggedIn  })=>{
                 children: " Submit "
             }, void 0, false, {
                 fileName: "src/components/login-view/login-view.jsx",
-                lineNumber: 72,
+                lineNumber: 73,
                 columnNumber: 13
->>>>>>> features
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/login-view/login-view.jsx",
-        lineNumber: 50,
+        lineNumber: 51,
         columnNumber: 9
     }, undefined);
 };
@@ -41709,10 +41518,10 @@ const SignupView = ({ onLoggedIn  })=>{
         };
         fetch("https://scenestealer.herokuapp.com/users", {
             method: "POST",
-            body: JSON.stringify(data),
             headers: {
                 "Content-Type": "application/json"
-            }
+            },
+            body: JSON.stringify(data)
         }).then((response)=>{
             if (response.ok) {
                 console.log("success");

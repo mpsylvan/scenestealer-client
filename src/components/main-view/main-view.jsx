@@ -26,7 +26,7 @@ export const MainView = ()=>{
             return;
         }
         fetch("https://scenestealer.herokuapp.com/movies",{
-            headers: {Authorization: `Bearer: ${token}`}
+            headers: {Authorization: `Bearer ${token}`}
         } 
         )
             .then((response) => response.json())
