@@ -1,3 +1,4 @@
+@import "https://fonts.googleapis.com/css2?family=Karma:wght@400;700&family=Roboto&family=Yanone+Kaffeesatz:wght@400;700&display=swap";
 :root {
   --bs-blue: #0d6efd;
   --bs-indigo: #6610f2;
@@ -12008,6 +12009,7 @@ textarea.form-control-lg {
 .card-body {
   color: #fff;
   background-color: #248;
+  font-family: Yanone Kaffeesatz, sans-serif;
 }
 
 .card-body:hover {
