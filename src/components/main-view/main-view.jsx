@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
 import { MovieCard } from "../movie-card/movie-card";
+import { SuggCard } from "../suggestion-card/suggestion-card";
 import { MovieView } from "../movie-view/movie-view";
 import { DirectorView } from "../director-view/director-view";
 import {LoginView} from "../login-view/login-view"
 import { SignupView } from "../signup-view/signup-view";
+import {NavigationBar} from "../navbar-view/navbar-view";
 import {Row, Col, Button} from 'react-bootstrap';
-import { SuggCard } from "../suggestion-card/suggestion-card";
+import { Routes, Route, Navigate, BrowserRouter } from 'react-router-dom';
 
 
 
@@ -17,7 +19,6 @@ export const MainView = ()=>{
     const [user, setUser] = useState(storedUser? storedUser: null);
     const [token, setToken] = useState(storedToken? storedToken: null);
     const[movies, setMovies] = useState([]);
-    const [selectedMovie, setSelectedMovie] = useState(null);
     const [selectedDirector, setSelectedDirector] = useState(null);
 
     // if jwt persists in local storage, use it to make fetch request to grab all movies, if it doesn't skip the use effect. 
@@ -54,11 +55,96 @@ export const MainView = ()=>{
    
     
     return (
-        <>
-
-            
+        <BrowserRouter>
+            <NavigationBar
+                user={user}
+                onLoggedOut = {()=>{setUser(null); setToken(null); localStorage.clear();}}
+            />
+        
             <Row className="justify-content-md-center">
-                {!user ? (
+                <Routes>
+                    <Route
+                        path="/signup"
+                        element = {
+                            <>
+                                { user ? (
+                                        <Navigate to="/"/>
+                                    ) : (
+                                        <Col md={5}>
+                                            <SignupView/>
+                                        </Col>
+                                    )}
+                            </>
+                        }
+                    />
+                    <Route
+                        path="/login"
+                        element = {
+                            <>
+                                { user ?
+                                    (
+                                        <Navigate to="/"/>
+                                    ) : (
+                                        <Col md={5}>
+                                            <LoginView onLoggedIn={(user)=>{setUser(user); setToken(token);}}/>
+                                        </Col>
+                                    )}
+                            </>
+                        }
+                    />
+                    <Route 
+                        path = "movies/:movieID"
+                        element = {
+                            <>
+                                { !user ? (
+                                    <Navigate to = "/login" replace />
+                                    ) : movies.length === 0 ? (
+                                        <Col>
+                                        <h3> There are no movies to display ! </h3>
+                                    </Col>
+                                ) : (
+                                   <Col md = {8}>
+                                        <MovieView 
+                                            movies = {movies}
+                                        />
+                                   </Col>
+                                )}
+                            </>
+                        }
+                    />
+                    <Route 
+                        path = "/"
+                        element = {
+                            <>
+                                { !user ? (
+                                    <Navigate to = "/login"  replace />
+                                ) : movies.length === 0 ? (
+                                        <Col>
+                                            <h3>There are no movies to display!</h3>
+                                        </Col>
+                                ) : (
+                                    <>
+                                        {movies.map((movie)=>(
+                                            <Col className = "mb-4" key = {movie.key} md={3}>
+                                                <MovieCard 
+                                                    movie = {movie}
+                                                />
+                                            </Col>
+                                        ))}
+                                        
+                                    </>
+                                )}
+                            </>
+                        }
+                    />
+                </Routes>        
+            </Row>
+           </BrowserRouter>
+        );
+    };
+    
+    
+        {/* {!user ? (
                     <Col className="mt-4" md={6}>
                         <LoginView onLoggedIn={(user, token)=>{
                             setUser(user);
@@ -100,17 +186,17 @@ export const MainView = ()=>{
                         { movies.filter((movie) => movie.genre.Name === selectedMovie.genre.Name && movie.title !== selectedMovie.title).map((movie) => 
                             (
                                 <SuggCard
-                                     
+                                    
                                     key={movie.key}
                                     movie={movie} 
                                     onMovieClick = {(movie)=> setSelectedMovie(movie)}/>
                                 
                             )
-                        )}
+                            )}
                         
                         </Col>
                     </Col>
-                ): (movies.length === 0) ?(
+                ): (movies.length === 0) ? (
                     <Col>
                         <Button onClick ={()=>{setUser(null); setToken(null); localStorage.clear();}}> Logout</Button>
                         <div>No Movies to display!</div>
@@ -131,13 +217,6 @@ export const MainView = ()=>{
                                 />
                             </Col>
                         ))}
-                      
+                    
                     </>
-                )}
-            </Row>
-           
-        </>
-        );
-    };
-    
-    
+                )} */}
