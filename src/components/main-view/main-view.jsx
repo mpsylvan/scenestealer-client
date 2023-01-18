@@ -60,7 +60,6 @@ export const MainView = ()=>{
                 user={user}
                 onLoggedOut = {()=>{setUser(null); setToken(null); localStorage.clear();}}
             />
-        
             <Row className="justify-content-md-center">
                 <Routes>
                     <Route
@@ -144,79 +143,4 @@ export const MainView = ()=>{
     };
     
     
-        {/* {!user ? (
-                    <Col className="mt-4" md={6}>
-                        <LoginView onLoggedIn={(user, token)=>{
-                            setUser(user);
-                            setToken(token);
-                            }}
-                        />
-                        <hr />
-                        <SignupView/>
-                    </Col>
-                ): selectedDirector ? (
-                    
-                    <Col  style={{display: 'flex', flexDirection:'column', justifyContent: 'center', alignItems:'center' }} className="mb-5 mt-8" md={8}>
-                        <DirectorView
-                        movie={selectedMovie} 
-                        onBackClick={()=>setSelectedDirector(null)}
-                        />
-                        <hr />
-                        <h3> Other films directed by {selectedMovie.director.Name}</h3>
-                        {movies.filter((movie) => movie.director.Name === selectedMovie.director.Name && movie.title !== selectedMovie.title).map((movie) => 
-                            (   
-                                <Col  className="m-3" md={3} key={movie.key}>    
-                                    <SuggCard  
-                                        movie={movie} 
-                                        onMovieClick = {(movie)=> setSelectedMovie(movie)}/>
-                                </Col>
-                        )
-                    )}
-                    </Col>
-                ) : selectedMovie ? (
-                    <Col style={{display: 'flex', flexDirection:'column', justifyContent: 'center', alignItems:'center' }} className="mt-3" md={8}>
-                        <MovieView 
-                            movie={selectedMovie}   
-                            onBackClick={()=>setSelectedMovie(null)}
-                            onDirectorClick={()=>setSelectedDirector(true)}
-                        />
-                        <hr />
-                        <h2>Similar Movies</h2>
-                        <Col style={{display: "flex", justifyContent:"center"}}>
-                        { movies.filter((movie) => movie.genre.Name === selectedMovie.genre.Name && movie.title !== selectedMovie.title).map((movie) => 
-                            (
-                                <SuggCard
-                                    
-                                    key={movie.key}
-                                    movie={movie} 
-                                    onMovieClick = {(movie)=> setSelectedMovie(movie)}/>
-                                
-                            )
-                            )}
-                        
-                        </Col>
-                    </Col>
-                ): (movies.length === 0) ? (
-                    <Col>
-                        <Button onClick ={()=>{setUser(null); setToken(null); localStorage.clear();}}> Logout</Button>
-                        <div>No Movies to display!</div>
-                    </Col>
-                ): (
-                    <>  
-                        <Row>
-                            <Col>
-                                <Button className="mt-3" md={1} onClick ={()=>{setUser(null); setToken(null); localStorage.clear();}}> Logout</Button>
-                            </Col>
-
-                        </Row>
-                        {movies.map((movie)=>(
-                            <Col className="mb-3 mt-3" md={3} key={movie.key}>
-                                <MovieCard
-                                    movie = {movie}
-                                    onMovieClick = {(movie)=> setSelectedMovie(movie)}
-                                />
-                            </Col>
-                        ))}
-                    
-                    </>
-                )} */}
+       
