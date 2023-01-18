@@ -1,20 +1,36 @@
 import PropTypes from 'prop-types';
 import { Button, Card } from 'react-bootstrap';
+import { useParams } from 'react-router';
+import { Link } from 'react-router-dom';
 
-export const MovieView = ({movie,  onBackClick, onDirectorClick})=>{
+export const MovieView = ({movies, onDirectorClick})=>{
+
+    const {movieID} = useParams();
+
+    const movie = movies.find((m)=> m.key === movieID);
+    
+
     return (
-        <Card style={{width: "20rem"}}>
-            <Card.Img variant="top" src={movie.image}/>
-            <Card.Body>
-                <Card.Title>{movie.title}</Card.Title>
-                <Card.Text className='director' onClick={onDirectorClick}><strong>Director: </strong>{movie.director.Name}</Card.Text>
-                <Card.Text><strong>Released:  </strong> {movie.releaseYear}</Card.Text>
-                <Card.Text><strong>Studio: </strong> {movie.studio}</Card.Text>
-                <Card.Text><strong>Synopsis:  </strong> {movie.desc}</Card.Text>
-                <Card.Text><strong>Genre: </strong> {movie.genre.Name}</Card.Text>
-            </Card.Body>
-            <Button className="mt-2" onClick={onBackClick}>Back to Movies</Button>
-        </Card>
+        <>
+   
+            <Card style={{width: "20rem"}}>
+                <Card.Img variant="top" src={movie.image}/>
+                <Card.Body>
+                    <Card.Title>{movie.title}</Card.Title>
+                    <Link to={"/"}>
+                        <Card.Text className='director' onClick={onDirectorClick}><strong>Director: </strong>{movie.director.Name}</Card.Text>
+                    </Link>
+                    <Card.Text><strong>Released:  </strong> {movie.releaseYear}</Card.Text>
+                    <Card.Text><strong>Studio: </strong> {movie.studio}</Card.Text>
+                    <Card.Text><strong>Synopsis:  </strong> {movie.desc}</Card.Text>
+                    <Card.Text><strong>Genre: </strong> {movie.genre.Name}</Card.Text>
+                </Card.Body>
+                <Link to={"/"}>
+                    <Button className="mt-2" >Back to Movies</Button>
+                </Link>
+            </Card>
+            
+        </>
     );
 };
 
@@ -31,8 +47,8 @@ MovieView.propTypes = {
         desc: PropTypes.string.isRequired,
         studio: PropTypes.string.isRequired,
     }),
-    onBackClick : PropTypes.func.isRequired,
-    onDirectorClick: PropTypes.func.isRequired,
+    // onBackClick : PropTypes.func.isRequired,
+    // onDirectorClick: PropTypes.func.isRequired,
 }
         // <div>
         //     <div>
