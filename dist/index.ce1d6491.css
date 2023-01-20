@@ -51,7 +51,7 @@
   --bs-body-font-weight: 400;
   --bs-body-line-height: 1.5;
   --bs-body-color: #212529;
-  --bs-body-bg: white;
+  --bs-body-bg: #fff;
   --bs-border-width: 1px;
   --bs-border-style: solid;
   --bs-border-color: #dee2e6;
@@ -3802,8 +3802,8 @@ textarea.form-control-lg {
   --bs-nav-tabs-border-radius: .375rem;
   --bs-nav-tabs-link-hover-border-color: #e9ecef #e9ecef #dee2e6;
   --bs-nav-tabs-link-active-color: #495057;
-  --bs-nav-tabs-link-active-bg: white;
-  --bs-nav-tabs-link-active-border-color: #dee2e6 #dee2e6 white;
+  --bs-nav-tabs-link-active-bg: #fff;
+  --bs-nav-tabs-link-active-border-color: #dee2e6 #dee2e6 #fff;
   border-bottom: var(--bs-nav-tabs-border-width) solid var(--bs-nav-tabs-border-color);
 }
 
@@ -4381,7 +4381,7 @@ textarea.form-control-lg {
   --bs-card-cap-color: ;
   --bs-card-height: ;
   --bs-card-color: ;
-  --bs-card-bg: #fff;
+  --bs-card-bg: #375c79;
   --bs-card-img-overlay-padding: 1rem;
   --bs-card-group-margin: .75rem;
   min-width: 0;
@@ -4555,7 +4555,7 @@ textarea.form-control-lg {
 
 .accordion {
   --bs-accordion-color: #212529;
-  --bs-accordion-bg: white;
+  --bs-accordion-bg: #fff;
   --bs-accordion-transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out, border-radius .15s ease;
   --bs-accordion-border-color: var(--bs-border-color);
   --bs-accordion-border-width: 1px;
@@ -12007,7 +12007,7 @@ textarea.form-control-lg {
 }
 
 .card {
-  background-color: #248;
+  background-color: #375c79;
 }
 
 .card-body {
@@ -12034,7 +12034,7 @@ textarea.form-control-lg {
 }
 
 .user {
-  color: #248;
+  color: #375c79;
 }
 
 button.btn-link {
