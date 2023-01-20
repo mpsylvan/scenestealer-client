@@ -2,13 +2,33 @@ import PropTypes from 'prop-types';
 import { Button, Card } from 'react-bootstrap';
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
+import './movie-view.scss';
 
-export const MovieView = ({movies, onDirectorClick})=>{
+export const MovieView = ({movies, user, onDirectorClick})=>{
 
     const {movieID} = useParams();
 
     const movie = movies.find((m)=> m.key === movieID);
     
+    const AddFavorite = (id, title) => {
+            fetch(`https://scenestealer.herokuapp.com/users/${user.Username}/favorites/${id}`,
+                {
+                    method: "POST",
+                    headers: {Authorization: `Bearer ${localStorage.getItem('token')}`},
+                }  
+            ).then((response)=> response.json()).then((data)=>{
+                if(data.newUser){
+                    localStorage.setItem('user', JSON.stringify(data.newUser));
+                    window.location.reload();
+                }else{
+                    alert('unable to add movie to favorites.')
+                    window.location.reload();
+                }
+            }).catch((e)=>{
+                console.log(e);
+            })
+        }
+
 
     return (
         <>
@@ -24,10 +44,14 @@ export const MovieView = ({movies, onDirectorClick})=>{
                     <Card.Text><strong>Studio: </strong> {movie.studio}</Card.Text>
                     <Card.Text><strong>Synopsis:  </strong> {movie.desc}</Card.Text>
                     <Card.Text><strong>Genre: </strong> {movie.genre.Name}</Card.Text>
+                    <div style={{display:'flex', justifyContent: 'center'}}>
+                        <Button className ="mt-2 movie-card-btn" onClick={()=>AddFavorite(movie.key, movie.title)}> Add to Favorites</Button>
+                        <Link to={"/"}>
+                            <Button className="mt-2 movie-card-btn" >Back to Movies</Button>
+                        </Link>
+                    </div>
+                    
                 </Card.Body>
-                <Link to={"/"}>
-                    <Button className="mt-2" >Back to Movies</Button>
-                </Link>
             </Card>
             
         </>
