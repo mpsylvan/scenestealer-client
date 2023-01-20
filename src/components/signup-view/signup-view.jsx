@@ -4,7 +4,7 @@ import {Form} from 'react-bootstrap';
 import {Button} from 'react-bootstrap';
 
 
-export const SignupView = ({onLoggedIn})=>{
+export const SignupView = ({})=>{
     const[username, setUsername] = useState("");
     const[email, setEmail] = useState("");
     const[password, setPassword] = useState("");
