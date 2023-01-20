@@ -6,6 +6,7 @@ import { DirectorView } from "../director-view/director-view";
 import {LoginView} from "../login-view/login-view"
 import { SignupView } from "../signup-view/signup-view";
 import {NavigationBar} from "../navbar-view/navbar-view";
+import { ProfileView } from "../profile-view/profile-view";
 import {Row, Col, Button} from 'react-bootstrap';
 import { Routes, Route, Navigate, BrowserRouter } from 'react-router-dom';
 
@@ -60,7 +61,7 @@ export const MainView = ()=>{
                 user={user}
                 onLoggedOut = {()=>{setUser(null); setToken(null); localStorage.clear();}}
             />
-            <Row className="justify-content-md-center">
+            <Row style={{justifyContent:'center'}}  className="justify-content-md-center">
                 <Routes>
                     <Route
                         path="/signup"
@@ -85,9 +86,28 @@ export const MainView = ()=>{
                                         <Navigate to="/"/>
                                     ) : (
                                         <Col md={5}>
-                                            <LoginView onLoggedIn={(user)=>{setUser(user); setToken(token);}}/>
+                                            <LoginView onLoggedIn={(user, token)=>{setUser(user); setToken(token);}}/>
                                         </Col>
                                     )}
+                            </>
+                        }
+                    />
+                    <Route
+                        path = "/profile"
+                        element = {
+                            <>
+                                {!user ? (
+                                    <Navigate to = "/login"/>
+                                    
+                                ) : (
+                                    <Col md = {10}>
+                                        <ProfileView
+                                            user = {user}
+                                            movies = {movies}
+                                            token = {token}
+                                        />
+                                    </Col>
+                                )}
                             </>
                         }
                     />
@@ -102,9 +122,10 @@ export const MainView = ()=>{
                                         <h3> There are no movies to display ! </h3>
                                     </Col>
                                 ) : (
-                                   <Col md = {8}>
+                                   <Col style={{display:"flex", justifyContent:"center"}} md = {8}>
                                         <MovieView 
                                             movies = {movies}
+                                            user = {user}
                                         />
                                    </Col>
                                 )}
