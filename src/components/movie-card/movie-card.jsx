@@ -5,9 +5,9 @@ import { Link } from 'react-router-dom';
 
 export const MovieCard = ({movie}) =>{
     return (
-        <Card className="h-100">
-            <Card.Img variant='top'  src={movie.image}/>
-            <Card.Body>
+        <Card className="h-100" style={{ border: "none", borderRadius: "5px", boxShadow: "1px 1px 10px 2px"}}>
+            <Card.Img variant='top'   src={movie.image}/>
+            <Card.Body style={{borderRadius: "5px"}}>
                 <Card.Title>{movie.title}</Card.Title>
                 <Card.Text>({movie.releaseYear})</Card.Text>
                  <Link to ={`/movies/${encodeURIComponent(movie.key)}`}>
