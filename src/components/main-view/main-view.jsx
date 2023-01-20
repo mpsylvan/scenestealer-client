@@ -132,6 +132,18 @@ export const MainView = ()=>{
                             </>
                         }
                     />
+                    <Route
+                        path="directors/:directorName"
+                        element = {
+                            <>
+                                {!user ? (
+                                    <Navigate to= "/login" replace />
+                                ):(
+                                    <DirectorView movies={movies}/>
+                                )}
+                            </>
+                        }
+                    />
                     <Route 
                         path = "/"
                         element = {

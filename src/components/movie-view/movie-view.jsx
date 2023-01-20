@@ -1,15 +1,15 @@
 import PropTypes from 'prop-types';
-import { Button, Card } from 'react-bootstrap';
+import { Container, Button, Card, Row, Col} from 'react-bootstrap';
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
+import { SimilarMovies } from './similar-movies';
 import './movie-view.scss';
 
-export const MovieView = ({movies, user, onDirectorClick})=>{
-
+export const MovieView = ({movies, user})=>{
     const {movieID} = useParams();
-
     const movie = movies.find((m)=> m.key === movieID);
-    
+
+    let similarMovies = movies.filter((m)=>m.genre.Name === movie.genre.Name && m.title !== movie.title );   
     const AddFavorite = (id, title) => {
             fetch(`https://scenestealer.herokuapp.com/users/${user.Username}/favorites/${id}`,
                 {
@@ -31,30 +31,39 @@ export const MovieView = ({movies, user, onDirectorClick})=>{
 
 
     return (
-        <>
-   
-            <Card style={{width: "20rem"}}>
-                <Card.Img variant="top" src={movie.image}/>
-                <Card.Body>
-                    <Card.Title>{movie.title}</Card.Title>
-                    <Link to={"/"}>
-                        <Card.Text className='director' onClick={onDirectorClick}><strong>Director: </strong>{movie.director.Name}</Card.Text>
-                    </Link>
-                    <Card.Text><strong>Released:  </strong> {movie.releaseYear}</Card.Text>
-                    <Card.Text><strong>Studio: </strong> {movie.studio}</Card.Text>
-                    <Card.Text><strong>Synopsis:  </strong> {movie.desc}</Card.Text>
-                    <Card.Text><strong>Genre: </strong> {movie.genre.Name}</Card.Text>
-                    <div style={{display:'flex', justifyContent: 'center'}}>
-                        <Button className ="mt-2 movie-card-btn" onClick={()=>AddFavorite(movie.key, movie.title)}> Add to Favorites</Button>
-                        <Link to={"/"}>
-                            <Button className="mt-2 movie-card-btn" >Back to Movies</Button>
+        <Container>
+            <Row style = {{justifyContent: 'center'}}>
+                <Card style={{width: "20rem"}}>
+                    <Card.Img variant="top" src={movie.image}/>
+                    <Card.Body>
+                        <Card.Title>{movie.title}</Card.Title>
+                        <Link to={`/directors/${movie.director.Name}`}>
+                            <Card.Text className='director'><strong>Director: </strong>{movie.director.Name}</Card.Text>
                         </Link>
-                    </div>
-                    
-                </Card.Body>
-            </Card>
-            
-        </>
+                        <Card.Text><strong>Released:  </strong> {movie.releaseYear}</Card.Text>
+                        <Card.Text><strong>Studio: </strong> {movie.studio}</Card.Text>
+                        <Card.Text><strong>Synopsis:  </strong> {movie.desc}</Card.Text>
+                        <Card.Text><strong>Genre: </strong> {movie.genre.Name}</Card.Text>
+                        <div style={{display:'flex', justifyContent: 'center'}}>
+                            <Button className ="mt-2 movie-card-btn" onClick={()=>AddFavorite(movie.key, movie.title)}> Add to Favorites</Button>
+                            <Link to={"/"}>
+                                <Button className="mt-2 movie-card-btn" >Back to Movies</Button>
+                            </Link>
+                        </div>
+                    </Card.Body>
+                </Card>
+            </Row>
+            <Row>
+                <Col>
+                    <h4>
+                        Similar Movies by Genre: 
+                    </h4>
+                </Col>
+                <SimilarMovies
+                    similarMovies={similarMovies}
+                />
+            </Row>
+        </Container>
     );
 };
 
