@@ -46852,7 +46852,7 @@ const ProfileView = ({ user , movies  })=>{
         });
     };
     const handleDeregister = (username)=>{
-        let choice = prompt("are you sure you want to deregister? you will be logged out of SceneStealer and need to re-register to re-gain access. Enter your username below to DEREGISTER");
+        let choice = prompt("Are you sure you want to deregister? You will be logged out of SceneStealer and need to re-register. Enter your USERNAME below to deregister.");
         console.log(choice);
         if (!choice) return;
         if (choice !== username) {
