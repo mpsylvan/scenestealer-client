@@ -65,7 +65,7 @@ export const ProfileView = ({ user, movies})=>{
                 alert('Update successful')
                 window.location.reload();
             }else{
-                alert('unable to update this user, double check your information.')
+                alert(`Unable to process user update, please double check your info`)
             }
         }).catch((e)=>{
             console.log(e);

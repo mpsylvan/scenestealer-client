@@ -21,7 +21,7 @@ export const UpdateUser = ({handleSubmit}) => {
                         type = "text"
                         value = {username}
                         onChange = {(e)=>{setUsername(e.target.value)}} 
-                        />
+                    />
                         
                 </Form.Group>
                 <Form.Group>
@@ -39,6 +39,7 @@ export const UpdateUser = ({handleSubmit}) => {
                         type = "password"
                         value = {password}
                         onChange = {(e)=>{setPassword(e.target.value)}} 
+                        min = "8"
                     />
                     
                 </Form.Group>
