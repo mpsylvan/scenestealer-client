@@ -48035,8 +48035,8 @@ var _reselect = require("reselect");
 // src/getDefaultMiddleware.ts
 var _reduxThunk = require("redux-thunk");
 var _reduxThunkDefault = parcelHelpers.interopDefault(_reduxThunk);
-var global = arguments[3];
 var process = require("68158305963a1306");
+var global = arguments[3];
 var __extends = undefined && undefined.__extends || function() {
     var extendStatics = function(d, b) {
         extendStatics = Object.setPrototypeOf || ({
@@ -51998,7 +51998,14 @@ var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _reactBootstrap = require("react-bootstrap");
 var _reactRouterDom = require("react-router-dom");
-const NavigationBar = ({ user , onLoggedOut  })=>{
+var _reactRedux = require("react-redux");
+var _user = require("../../redux/reducers/users/user");
+var _token = require("../../redux/reducers/users/token");
+var _s = $RefreshSig$();
+const NavigationBar = ()=>{
+    _s();
+    const dispatch = (0, _reactRedux.useDispatch)();
+    const user = (0, _reactRedux.useSelector)((state)=>state.user);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Navbar), {
         bg: "light",
         expand: "lg",
@@ -52010,14 +52017,14 @@ const NavigationBar = ({ user , onLoggedOut  })=>{
                     children: "SceneStealer Database"
                 }, void 0, false, {
                     fileName: "src/components/navbar-view/navbar-view.jsx",
-                    lineNumber: 10,
+                    lineNumber: 14,
                     columnNumber: 17
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Navbar).Toggle, {
                     "aria-controls": "basic-navbar-nav"
                 }, void 0, false, {
                     fileName: "src/components/navbar-view/navbar-view.jsx",
-                    lineNumber: 13,
+                    lineNumber: 17,
                     columnNumber: 17
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Navbar).Collapse, {
@@ -52033,7 +52040,7 @@ const NavigationBar = ({ user , onLoggedOut  })=>{
                                         children: "login"
                                     }, void 0, false, {
                                         fileName: "src/components/navbar-view/navbar-view.jsx",
-                                        lineNumber: 18,
+                                        lineNumber: 22,
                                         columnNumber: 33
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Nav).Link, {
@@ -52042,7 +52049,7 @@ const NavigationBar = ({ user , onLoggedOut  })=>{
                                         children: " signup "
                                     }, void 0, false, {
                                         fileName: "src/components/navbar-view/navbar-view.jsx",
-                                        lineNumber: 19,
+                                        lineNumber: 23,
                                         columnNumber: 33
                                     }, undefined)
                                 ]
@@ -52055,7 +52062,7 @@ const NavigationBar = ({ user , onLoggedOut  })=>{
                                         children: " Home"
                                     }, void 0, false, {
                                         fileName: "src/components/navbar-view/navbar-view.jsx",
-                                        lineNumber: 24,
+                                        lineNumber: 28,
                                         columnNumber: 33
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Nav).Link, {
@@ -52064,16 +52071,16 @@ const NavigationBar = ({ user , onLoggedOut  })=>{
                                         children: "Profile"
                                     }, void 0, false, {
                                         fileName: "src/components/navbar-view/navbar-view.jsx",
-                                        lineNumber: 25,
+                                        lineNumber: 29,
                                         columnNumber: 33
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Nav).Link, {
                                         as: (0, _reactRouterDom.Link),
-                                        onClick: onLoggedOut,
+                                        onClick: ()=>dispatch((0, _user.setUser)(null), (0, _token.setToken)(null), localStorage.clear()),
                                         children: " Logout "
                                     }, void 0, false, {
                                         fileName: "src/components/navbar-view/navbar-view.jsx",
-                                        lineNumber: 26,
+                                        lineNumber: 30,
                                         columnNumber: 33
                                     }, undefined)
                                 ]
@@ -52081,23 +52088,23 @@ const NavigationBar = ({ user , onLoggedOut  })=>{
                         ]
                     }, void 0, true, {
                         fileName: "src/components/navbar-view/navbar-view.jsx",
-                        lineNumber: 15,
+                        lineNumber: 19,
                         columnNumber: 21
                     }, undefined)
                 }, void 0, false, {
                     fileName: "src/components/navbar-view/navbar-view.jsx",
-                    lineNumber: 14,
+                    lineNumber: 18,
                     columnNumber: 17
                 }, undefined)
             ]
         }, void 0, true, {
             fileName: "src/components/navbar-view/navbar-view.jsx",
-            lineNumber: 9,
+            lineNumber: 13,
             columnNumber: 13
         }, undefined)
     }, void 0, false, {
         fileName: "src/components/navbar-view/navbar-view.jsx",
-        lineNumber: 8,
+        lineNumber: 12,
         columnNumber: 9
     }, undefined);
 } // return (
@@ -52126,6 +52133,12 @@ const NavigationBar = ({ user , onLoggedOut  })=>{
  //     </Navbar>
  // )
 ;
+_s(NavigationBar, "ERMOJPz2/CN1rNPFhRsLNXBEzzQ=", false, function() {
+    return [
+        (0, _reactRedux.useDispatch),
+        (0, _reactRedux.useSelector)
+    ];
+});
 _c = NavigationBar;
 var _c;
 $RefreshReg$(_c, "NavigationBar");
@@ -52135,7 +52148,7 @@ $RefreshReg$(_c, "NavigationBar");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"21dqq","react-bootstrap":"3AD9A","react-router-dom":"9xmpe","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react/jsx-dev-runtime":"iTorj"}],"2vVqf":[function(require,module,exports) {
+},{"react":"21dqq","react-bootstrap":"3AD9A","react-router-dom":"9xmpe","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react/jsx-dev-runtime":"iTorj","react-redux":"bdVon","../../redux/reducers/users/user":"gAmJW","../../redux/reducers/users/token":"cGCa4"}],"2vVqf":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$3c12 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
