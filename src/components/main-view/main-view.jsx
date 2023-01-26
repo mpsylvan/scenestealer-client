@@ -11,6 +11,8 @@ import { Routes, Route, Navigate, BrowserRouter } from 'react-router-dom';
 // useDispatch to dispatch action creators, useSelector to get states
 import { useDispatch, useSelector } from "react-redux";
 import { setMovies } from "../../redux/reducers/movies";
+import { setUser} from "../../redux/reducers/users/user";
+import { setToken } from "../../redux/reducers/users/token";
 
 
 
@@ -19,11 +21,13 @@ export const MainView = ()=>{
     const storedUser = JSON.parse(localStorage.getItem("user"));
     const storedToken = localStorage.getItem("token");
     // state variables and their setters used for persisting authentication and presenting movie data and click states. 
-    const [user, setUser] = useState(storedUser? storedUser: null);
-    const [token, setToken] = useState(storedToken? storedToken: null);
     
-    // access the state of movies via store
+    
+    
+    // access the state of movies and user via store
     const movies = useSelector((state) => state.movies);
+    const user = useSelector((state)=>state.user);
+    const token = useSelector((state)=>state.token);
 
     const dispatch = useDispatch(); 
     
@@ -63,10 +67,7 @@ export const MainView = ()=>{
     
     return (
         <BrowserRouter>
-            <NavigationBar
-                user={user}
-                onLoggedOut = {()=>{setUser(null); setToken(null); localStorage.clear();}}
-            />
+            <NavigationBar/>
             <Row style={{justifyContent:'center'}}  className="justify-content-md-center">
                 <Routes>
                     <Route
@@ -92,7 +93,7 @@ export const MainView = ()=>{
                                         <Navigate to="/"/>
                                     ) : (
                                         <Col md={5}>
-                                            <LoginView onLoggedIn={(user, token)=>{setUser(user); setToken(token);}}/>
+                                            <LoginView />
                                         </Col>
                                     )}
                             </>

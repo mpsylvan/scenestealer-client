@@ -2,12 +2,20 @@ import React from "react";
 import {useState} from "react";
 import {Form} from 'react-bootstrap';
 import {Button} from 'react-bootstrap';
+import { useSelector, useDispatch } from "react-redux";
+import { setUser } from "../../redux/reducers/users/user";
+import { setToken} from "../../redux/reducers/users/token";
 
 
 
-export const LoginView = ({onLoggedIn}) => {
+export const LoginView = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+
+    const user = useSelector((state)=>state.user);
+    const token = useSelector((state)=>state.token);
+    const dispatch = useDispatch();
+
 
     const handleSubmit = (event) => {
         // prevents the default behavior of the form which is to reload the entire page
@@ -31,7 +39,9 @@ export const LoginView = ({onLoggedIn}) => {
             if(data.user){
                 localStorage.setItem("user", JSON.stringify(data.user));
                 localStorage.setItem("token", data.token);
-                onLoggedIn(data.user, data.token);
+                dispatch(setUser(data.user));
+                dispatch(setToken(data.token));
+                
             }else{
                 alert('could not find such a user')
             }
