@@ -8,6 +8,9 @@ import {NavigationBar} from "../navbar-view/navbar-view";
 import { ProfileView } from "../profile-view/profile-view";
 import {Row, Col, Button} from 'react-bootstrap';
 import { Routes, Route, Navigate, BrowserRouter } from 'react-router-dom';
+// useDispatch to dispatch action creators, useSelector to get states
+import { useDispatch, useSelector } from "react-redux";
+import { setMovies } from "../../redux/reducers/movies";
 
 
 
@@ -18,8 +21,12 @@ export const MainView = ()=>{
     // state variables and their setters used for persisting authentication and presenting movie data and click states. 
     const [user, setUser] = useState(storedUser? storedUser: null);
     const [token, setToken] = useState(storedToken? storedToken: null);
-    const[movies, setMovies] = useState([]);
-    const [selectedDirector, setSelectedDirector] = useState(null);
+    
+    // access the state of movies via store
+    const movies = useSelector((state) => state.movies);
+
+    const dispatch = useDispatch(); 
+    
 
     // if jwt persists in local storage, use it to make fetch request to grab all movies, if it doesn't skip the use effect. 
     useEffect(()=>{
@@ -46,8 +53,8 @@ export const MainView = ()=>{
                         image: movie.Image,
                     }
                 });
-                setMovies(movieData);
-                console.log(movies)
+                dispatch(setMovies(movieData));
+                
             })
         }, [token])
         
@@ -102,7 +109,6 @@ export const MainView = ()=>{
                                     <Col md = {10}>
                                         <ProfileView
                                             user = {user}
-                                            movies = {movies}
                                             token = {token}
                                         />
                                     </Col>
@@ -123,7 +129,6 @@ export const MainView = ()=>{
                                 ) : (
                                    <Col style={{display:"flex", justifyContent:"center"}} md = {8}>
                                         <MovieView 
-                                            movies = {movies}
                                             user = {user}
                                         />
                                    </Col>

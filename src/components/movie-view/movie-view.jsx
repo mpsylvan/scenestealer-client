@@ -3,10 +3,12 @@ import { Container, Button, Card, Row, Col} from 'react-bootstrap';
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
 import { SimilarMovies } from './similar-movies';
+import { useSelector } from 'react-redux';
 import './movie-view.scss';
 
-export const MovieView = ({movies, user})=>{
+export const MovieView = ({user})=>{
     const {movieID} = useParams();
+    const movies = useSelector((state) => state.movies);
     const movie = movies.find((m)=> m.key === movieID);
 
     let similarMovies = movies.filter((m)=>m.genre.Name === movie.genre.Name && m.title !== movie.title );   

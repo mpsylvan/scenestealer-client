@@ -7,14 +7,17 @@ import {Container, Row, Col} from 'react-bootstrap';
 import {UserInfo} from "./user-info";
 import {UpdateUser} from "./update-user";
 import { FavoritesView } from './favorite-movies'; // I"LL DEAL WITH YOU LATER !
+import { useSelector } from 'react-redux';
 
 
-export const ProfileView = ({ user, movies})=>{
+export const ProfileView = ({ user})=>{
     
     const[username, setUsername] = useState("");
     const[email, setEmail] = useState("");
     const[password, setPassword] = useState("");
     const[birthdate, setBirthdate] = useState("");
+
+    const movies = useSelector((state) => state.movies);
 
     const favMovies = movies.filter((movie) => user.FavoriteMovies.includes(movie.key));
 
