@@ -2,12 +2,12 @@ import React from "react";
 import {Navbar, Container, Nav} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
-import { setUser} from "../../redux/reducers/users/user";
-import { setToken } from "../../redux/reducers/users/token";
+import { setUser, setToken} from "../../redux/reducers/users/user";
+
 
 export const NavigationBar = ()=>{
     const dispatch = useDispatch();
-    const user = useSelector((state)=>state.user);
+    const user = useSelector((state)=>state.user.user);
     return (
         <Navbar bg="light" expand="lg">
             <Container>

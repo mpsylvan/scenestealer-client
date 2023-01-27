@@ -11,7 +11,7 @@ export const MovieView = ()=>{
     
     const {movieID} = useParams();
 
-    const user = useSelector((state)=>state.user);
+    const user = useSelector((state)=>state.user.user);
 
     const movies = useSelector((state) => state.movies.list);
 

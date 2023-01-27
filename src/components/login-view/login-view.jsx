@@ -3,8 +3,8 @@ import {useState} from "react";
 import {Form} from 'react-bootstrap';
 import {Button} from 'react-bootstrap';
 import {useDispatch } from "react-redux";
-import { setUser } from "../../redux/reducers/users/user";
-import { setToken} from "../../redux/reducers/users/token";
+import { setUser, setToken} from "../../redux/reducers/users/user";
+
 
 
 

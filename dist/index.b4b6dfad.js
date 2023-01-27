@@ -27286,7 +27286,6 @@ var _reactRouterDom = require("react-router-dom");
 var _reactRedux = require("react-redux");
 var _movies = require("../../redux/reducers/movies");
 var _user = require("../../redux/reducers/users/user");
-var _token = require("../../redux/reducers/users/token");
 var _moviesList = require("../movies-list/movies-list");
 var _s = $RefreshSig$();
 const MainView = ()=>{
@@ -27297,8 +27296,8 @@ const MainView = ()=>{
     // state variables and their setters used for persisting authentication and presenting movie data and click states. 
     // access the state of movies and user via store
     const movies = (0, _reactRedux.useSelector)((state)=>state.movies.list);
-    const user = (0, _reactRedux.useSelector)((state)=>state.user);
-    const token = (0, _reactRedux.useSelector)((state)=>state.token);
+    const user = (0, _reactRedux.useSelector)((state)=>state.user.user);
+    const token = (0, _reactRedux.useSelector)((state)=>state.user.token);
     const dispatch = (0, _reactRedux.useDispatch)();
     // if jwt persists in local storage, use it to make fetch request to grab all movies, if it doesn't skip the use effect. 
     (0, _react.useEffect)(()=>{
@@ -27331,7 +27330,7 @@ const MainView = ()=>{
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navbarView.NavigationBar), {}, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 72,
+                lineNumber: 71,
                 columnNumber: 13
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Row), {
@@ -27353,7 +27352,7 @@ const MainView = ()=>{
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 75,
+                            lineNumber: 74,
                             columnNumber: 21
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -27368,7 +27367,7 @@ const MainView = ()=>{
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 89,
+                            lineNumber: 88,
                             columnNumber: 21
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -27383,7 +27382,7 @@ const MainView = ()=>{
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 104,
+                            lineNumber: 103,
                             columnNumber: 21
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -27407,7 +27406,7 @@ const MainView = ()=>{
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 119,
+                            lineNumber: 118,
                             columnNumber: 21
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -27422,7 +27421,7 @@ const MainView = ()=>{
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 137,
+                            lineNumber: 136,
                             columnNumber: 21
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -27435,24 +27434,24 @@ const MainView = ()=>{
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 149,
+                            lineNumber: 148,
                             columnNumber: 21
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 74,
+                    lineNumber: 73,
                     columnNumber: 17
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 73,
+                lineNumber: 72,
                 columnNumber: 13
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 71,
+        lineNumber: 70,
         columnNumber: 9
     }, undefined);
 };
@@ -27473,7 +27472,7 @@ $RefreshReg$(_c, "MainView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react":"21dqq","react/jsx-dev-runtime":"iTorj","../movie-card/movie-card":"bwuIu","../movie-view/movie-view":"ggaUx","../director-view/director-view":"9tpci","../login-view/login-view":"9YtA0","../signup-view/signup-view":"4OGiN","react-bootstrap":"3AD9A","react-router-dom":"9xmpe","../navbar-view/navbar-view":"divrl","../profile-view/profile-view":"2vVqf","react-redux":"bdVon","../../redux/reducers/movies":"l0qwl","../../redux/reducers/users/user":"gAmJW","../../redux/reducers/users/token":"cGCa4","../movie-filter/movie-filter":"ctQ0s","../movies-list/movies-list":"bPxKK"}],"gkKU3":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react":"21dqq","react/jsx-dev-runtime":"iTorj","../movie-card/movie-card":"bwuIu","../movie-view/movie-view":"ggaUx","../director-view/director-view":"9tpci","../login-view/login-view":"9YtA0","../signup-view/signup-view":"4OGiN","react-bootstrap":"3AD9A","react-router-dom":"9xmpe","../navbar-view/navbar-view":"divrl","../profile-view/profile-view":"2vVqf","react-redux":"bdVon","../../redux/reducers/movies":"l0qwl","../../redux/reducers/users/user":"gAmJW","../movie-filter/movie-filter":"ctQ0s","../movies-list/movies-list":"bPxKK"}],"gkKU3":[function(require,module,exports) {
 exports.interopDefault = function(a) {
     return a && a.__esModule ? a : {
         default: a
@@ -45731,7 +45730,7 @@ var _s = $RefreshSig$();
 const MovieView = ()=>{
     _s();
     const { movieID  } = (0, _reactRouter.useParams)();
-    const user = (0, _reactRedux.useSelector)((state)=>state.user);
+    const user = (0, _reactRedux.useSelector)((state)=>state.user.user);
     const movies = (0, _reactRedux.useSelector)((state)=>state.movies.list);
     const movie = movies.find((m)=>m.key === movieID);
     const dispatch = (0, _reactRedux.useDispatch)();
@@ -47697,17 +47696,24 @@ parcelHelpers.defineInteropFlag(exports);
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "setUser", ()=>setUser);
+parcelHelpers.export(exports, "setToken", ()=>setToken);
 var _toolkit = require("@reduxjs/toolkit");
 const userSlice = (0, _toolkit.createSlice)({
     name: "user",
-    initialState: null,
+    initialState: {
+        user: null,
+        token: null
+    },
     reducers: {
         setUser: (state, action)=>{
-            return action.payload;
+            state.user = action.payload;
+        },
+        setToken: (state, action)=>{
+            state.token = action.payload;
         }
     }
 });
-const { setUser  } = userSlice.actions;
+const { setUser , setToken  } = userSlice.actions;
 exports.default = userSlice.reducer;
 
 },{"@reduxjs/toolkit":"lL1Ef","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"lL1Ef":[function(require,module,exports) {
@@ -51634,7 +51640,6 @@ var _reactDefault = parcelHelpers.interopDefault(_react);
 var _reactBootstrap = require("react-bootstrap");
 var _reactRedux = require("react-redux");
 var _user = require("../../redux/reducers/users/user");
-var _token = require("../../redux/reducers/users/token");
 var _s = $RefreshSig$();
 const LoginView = ()=>{
     _s();
@@ -51659,7 +51664,7 @@ const LoginView = ()=>{
                 localStorage.setItem("user", JSON.stringify(data.user));
                 localStorage.setItem("token", data.token);
                 dispatch((0, _user.setUser)(data.user));
-                dispatch((0, _token.setToken)(data.token));
+                dispatch((0, _user.setToken)(data.token));
             } else alert("could not find such a user");
         }).catch((e)=>{
             console.log(e);
@@ -51760,24 +51765,7 @@ $RefreshReg$(_c, "LoginView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react-bootstrap":"3AD9A","react-redux":"bdVon","../../redux/reducers/users/user":"gAmJW","../../redux/reducers/users/token":"cGCa4"}],"cGCa4":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "setToken", ()=>setToken);
-var _toolkit = require("@reduxjs/toolkit");
-const tokenSlice = (0, _toolkit.createSlice)({
-    name: "token",
-    initialState: null,
-    reducers: {
-        setToken: (state, action)=>{
-            return action.payload;
-        }
-    }
-});
-const { setToken  } = tokenSlice.actions;
-exports.default = tokenSlice.reducer;
-
-},{"@reduxjs/toolkit":"lL1Ef","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"4OGiN":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react-bootstrap":"3AD9A","react-redux":"bdVon","../../redux/reducers/users/user":"gAmJW"}],"4OGiN":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$73d1 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -51986,12 +51974,11 @@ var _reactBootstrap = require("react-bootstrap");
 var _reactRouterDom = require("react-router-dom");
 var _reactRedux = require("react-redux");
 var _user = require("../../redux/reducers/users/user");
-var _token = require("../../redux/reducers/users/token");
 var _s = $RefreshSig$();
 const NavigationBar = ()=>{
     _s();
     const dispatch = (0, _reactRedux.useDispatch)();
-    const user = (0, _reactRedux.useSelector)((state)=>state.user);
+    const user = (0, _reactRedux.useSelector)((state)=>state.user.user);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Navbar), {
         bg: "light",
         expand: "lg",
@@ -52062,7 +52049,7 @@ const NavigationBar = ()=>{
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Nav).Link, {
                                         as: (0, _reactRouterDom.Link),
-                                        onClick: ()=>dispatch((0, _user.setUser)(null), dispatch((0, _token.setToken)(null)), localStorage.clear()),
+                                        onClick: ()=>dispatch((0, _user.setUser)(null), dispatch((0, _user.setToken)(null)), localStorage.clear()),
                                         children: " Logout "
                                     }, void 0, false, {
                                         fileName: "src/components/navbar-view/navbar-view.jsx",
@@ -52134,7 +52121,7 @@ $RefreshReg$(_c, "NavigationBar");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"21dqq","react-bootstrap":"3AD9A","react-router-dom":"9xmpe","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react/jsx-dev-runtime":"iTorj","react-redux":"bdVon","../../redux/reducers/users/user":"gAmJW","../../redux/reducers/users/token":"cGCa4"}],"2vVqf":[function(require,module,exports) {
+},{"react":"21dqq","react-bootstrap":"3AD9A","react-router-dom":"9xmpe","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react/jsx-dev-runtime":"iTorj","react-redux":"bdVon","../../redux/reducers/users/user":"gAmJW"}],"2vVqf":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$3c12 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -52162,7 +52149,7 @@ const ProfileView = ()=>{
     const [password, setPassword] = (0, _react.useState)("");
     const [birthdate, setBirthdate] = (0, _react.useState)("");
     const movies = (0, _reactRedux.useSelector)((state)=>state.movies.list);
-    const user = (0, _reactRedux.useSelector)((state)=>state.user);
+    const user = (0, _reactRedux.useSelector)((state)=>state.user.user);
     const dispatch = (0, _reactRedux.useDispatch)();
     const favMovies = movies.filter((movie)=>user.FavoriteMovies.includes(movie.key));
     const removeFav = (id)=>{
@@ -53023,16 +53010,13 @@ var _movies = require("./reducers/movies");
 var _moviesDefault = parcelHelpers.interopDefault(_movies);
 var _user = require("./reducers/users/user");
 var _userDefault = parcelHelpers.interopDefault(_user);
-var _token = require("./reducers/users/token");
-var _tokenDefault = parcelHelpers.interopDefault(_token);
 const store = (0, _toolkit.configureStore)({
     reducer: {
         movies: (0, _moviesDefault.default),
-        user: (0, _userDefault.default),
-        token: (0, _tokenDefault.default)
+        user: (0, _userDefault.default)
     }
 });
 
-},{"@reduxjs/toolkit":"lL1Ef","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./reducers/movies":"l0qwl","./reducers/users/user":"gAmJW","./reducers/users/token":"cGCa4"}]},["1xC6H","jVvJi","d8Dch"], "d8Dch", "parcelRequirefd63")
+},{"@reduxjs/toolkit":"lL1Ef","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./reducers/movies":"l0qwl","./reducers/users/user":"gAmJW"}]},["1xC6H","jVvJi","d8Dch"], "d8Dch", "parcelRequirefd63")
 
 //# sourceMappingURL=index.b4b6dfad.js.map

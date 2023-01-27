@@ -12,8 +12,7 @@ import { Routes, Route, Navigate, BrowserRouter } from 'react-router-dom';
 // useDispatch to dispatch action creators, useSelector to get states
 import { useDispatch, useSelector } from "react-redux";
 import { setMovies } from "../../redux/reducers/movies";
-import { setUser} from "../../redux/reducers/users/user";
-import { setToken } from "../../redux/reducers/users/token";
+import { setUser, setToken} from "../../redux/reducers/users/user";
 import { MoviesList } from "../movies-list/movies-list";
 
 
@@ -28,8 +27,8 @@ export const MainView = ()=>{
     
     // access the state of movies and user via store
     const movies = useSelector((state) => state.movies.list);
-    const user = useSelector((state)=>state.user);
-    const token = useSelector((state)=>state.token);
+    const user = useSelector((state)=>state.user.user);
+    const token = useSelector((state)=>state.user.token);
 
     const dispatch = useDispatch(); 
     
