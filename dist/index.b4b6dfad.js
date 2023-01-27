@@ -52062,7 +52062,7 @@ const NavigationBar = ()=>{
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Nav).Link, {
                                         as: (0, _reactRouterDom.Link),
-                                        onClick: ()=>dispatch((0, _user.setUser)(null), (0, _token.setToken)(null), localStorage.clear()),
+                                        onClick: ()=>dispatch((0, _user.setUser)(null), dispatch((0, _token.setToken)(null)), localStorage.clear()),
                                         children: " Logout "
                                     }, void 0, false, {
                                         fileName: "src/components/navbar-view/navbar-view.jsx",

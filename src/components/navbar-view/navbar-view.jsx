@@ -27,7 +27,7 @@ export const NavigationBar = ()=>{
                             <>
                                 <Nav.Link as={Link} to="/"> Home</Nav.Link>
                                 <Nav.Link as ={Link} to ="/profile">Profile</Nav.Link>
-                                <Nav.Link as={Link} onClick={()=>dispatch(setUser(null), setToken(null), localStorage.clear())} > Logout </Nav.Link>
+                                <Nav.Link as={Link} onClick={()=>dispatch(setUser(null), dispatch(setToken(null)), localStorage.clear())} > Logout </Nav.Link>
                             </>
                         )}
                     </Nav>
