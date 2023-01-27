@@ -108,10 +108,7 @@ export const MainView = ()=>{
                                     
                                 ) : (
                                     <Col md = {10}>
-                                        <ProfileView
-                                            user = {user}
-                                            token = {token}
-                                        />
+                                        <ProfileView/>
                                     </Col>
                                 )}
                             </>
@@ -129,9 +126,7 @@ export const MainView = ()=>{
                                     </Col>
                                 ) : (
                                    <Col style={{display:"flex", justifyContent:"center"}} md = {8}>
-                                        <MovieView 
-                                            user = {user}
-                                        />
+                                        <MovieView />
                                    </Col>
                                 )}
                             </>
@@ -180,5 +175,3 @@ export const MainView = ()=>{
         );
     };
     
-    
-
