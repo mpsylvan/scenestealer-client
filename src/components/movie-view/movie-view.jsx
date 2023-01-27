@@ -3,15 +3,25 @@ import { Container, Button, Card, Row, Col} from 'react-bootstrap';
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
 import { SimilarMovies } from './similar-movies';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { setUser } from "../../redux/reducers/users/user";
 import './movie-view.scss';
 
-export const MovieView = ({user})=>{
+export const MovieView = ()=>{
+    
     const {movieID} = useParams();
+
+    const user = useSelector((state)=>state.user);
+
     const movies = useSelector((state) => state.movies);
+
     const movie = movies.find((m)=> m.key === movieID);
+    
+
+    const dispatch = useDispatch();
 
     let similarMovies = movies.filter((m)=>m.genre.Name === movie.genre.Name && m.title !== movie.title );   
+    
     const AddFavorite = (id, title) => {
             fetch(`https://scenestealer.herokuapp.com/users/${user.Username}/favorites/${id}`,
                 {
@@ -21,7 +31,7 @@ export const MovieView = ({user})=>{
             ).then((response)=> response.json()).then((data)=>{
                 if(data.newUser){
                     localStorage.setItem('user', JSON.stringify(data.newUser));
-                    window.location.reload();
+                    dispatch(setUser(data.newUser));
                 }else{
                     alert('unable to add movie to favorites.')
                     window.location.reload();
