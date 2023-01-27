@@ -2,15 +2,17 @@ import React from 'react';
 import { useState } from 'react';
 import {Link} from 'react-router-dom';
 import {Button, Card, Figure, Form} from 'react-bootstrap';
-import {useParams} from 'react-router';
 import {Container, Row, Col} from 'react-bootstrap';
 import {UserInfo} from "./user-info";
 import {UpdateUser} from "./update-user";
 import { FavoritesView } from './favorite-movies'; // I"LL DEAL WITH YOU LATER !
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { setUser } from "../../redux/reducers/users/user";
 
 
-export const ProfileView = ({ user})=>{
+
+
+export const ProfileView = ()=>{
     
     const[username, setUsername] = useState("");
     const[email, setEmail] = useState("");
@@ -18,6 +20,10 @@ export const ProfileView = ({ user})=>{
     const[birthdate, setBirthdate] = useState("");
 
     const movies = useSelector((state) => state.movies);
+    const user = useSelector((state)=>state.user);
+    
+    const dispatch = useDispatch();
+    
 
     const favMovies = movies.filter((movie) => user.FavoriteMovies.includes(movie.key));
 
@@ -36,7 +42,7 @@ export const ProfileView = ({ user})=>{
             .then((data)=>{
                 if(data.newUser){
                     localStorage.setItem('user', JSON.stringify(data.newUser));
-                    window.location.reload();
+                    dispatch(setUser(data.newUser));
                 }else{
                     alert('there was an issue removing film.')
                 }
@@ -66,7 +72,7 @@ export const ProfileView = ({ user})=>{
             if(data.newUser){
                 localStorage.setItem("user", JSON.stringify(data.newUser));
                 alert('Update successful')
-                window.location.reload();
+                dispatch(setUser(data.newUser));
             }else{
                 alert(`Unable to process user update, please double check your info`)
             }
