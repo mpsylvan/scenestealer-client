@@ -121,11 +121,7 @@ export const MainView = ()=>{
                             <>
                                 { !user ? (
                                     <Navigate to = "/login" replace />
-                                    ) : movies.length === 0 ? (
-                                        <Col>
-                                        <h3> There are no movies to display ! </h3>
-                                    </Col>
-                                ) : (
+                                    ) : (
                                    <Col style={{display:"flex", justifyContent:"center"}} md = {8}>
                                         <MovieView />
                                    </Col>
@@ -140,7 +136,7 @@ export const MainView = ()=>{
                                 {!user ? (
                                     <Navigate to= "/login" replace />
                                 ):(
-                                    <DirectorView movies={movies}/>
+                                    <DirectorView/>
                                 )}
                             </>
                         }

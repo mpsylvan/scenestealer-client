@@ -2,11 +2,14 @@ import PropTypes from 'prop-types';
 import {Button, Card} from 'react-bootstrap';
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 
-export const DirectorView = ({movies})=>{
+export const DirectorView = ()=>{
 
     const {directorName} = useParams();
+
+    let movies = useSelector((state)=>state.movies.list);
 
     let movie = movies.find((m)=>m.director.Name === directorName);
     
