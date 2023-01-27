@@ -14,6 +14,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setMovies } from "../../redux/reducers/movies";
 import { setUser} from "../../redux/reducers/users/user";
 import { setToken } from "../../redux/reducers/users/token";
+import { MoviesList } from "../movies-list/movies-list";
 
 
 
@@ -151,23 +152,9 @@ export const MainView = ()=>{
                             <>
                                 { !user ? (
                                     <Navigate to = "/login"  replace />
-                                ) : movies.length === 0 ? (
-                                        <Col>
-                                            <h3>There are no movies to display!</h3>
-                                        </Col>
-                                ) : (
-                                    <>
-                                        
-                                        {movies.map((movie)=>(
-                                            <Col className = "mb-4" key = {movie.key} md={3}>
-                                                <MovieCard 
-                                                    movie = {movie}
-                                                />
-                                            </Col>
-                                        ))}
-                                        
-                                    </>
-                                )}
+                                ) : 
+                                    <MoviesList/>
+                                }
                             </>
                         }
                     />
