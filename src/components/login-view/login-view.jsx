@@ -2,7 +2,7 @@ import React from "react";
 import {useState} from "react";
 import {Form} from 'react-bootstrap';
 import {Button} from 'react-bootstrap';
-import { useSelector, useDispatch } from "react-redux";
+import {useDispatch } from "react-redux";
 import { setUser } from "../../redux/reducers/users/user";
 import { setToken} from "../../redux/reducers/users/token";
 
@@ -12,8 +12,8 @@ export const LoginView = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
-    const user = useSelector((state)=>state.user);
-    const token = useSelector((state)=>state.token);
+  
+
     const dispatch = useDispatch();
 
 
