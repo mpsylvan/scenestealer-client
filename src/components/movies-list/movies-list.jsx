@@ -13,7 +13,7 @@ export const MoviesList = ()=>{
 
     return (
         <>
-            <Row className="mb-3 mt-2" >
+            <Row className="mb-3 mt-2t" >
                 <MoviesFilter/>
             </Row>
             <Row>
