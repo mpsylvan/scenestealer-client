@@ -19,7 +19,7 @@ export const ProfileView = ()=>{
     const[password, setPassword] = useState("");
     const[birthdate, setBirthdate] = useState("");
 
-    const movies = useSelector((state) => state.movies);
+    const movies = useSelector((state) => state.movies.list);
     const user = useSelector((state)=>state.user);
     
     const dispatch = useDispatch();

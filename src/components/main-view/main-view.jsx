@@ -6,6 +6,7 @@ import {LoginView} from "../login-view/login-view"
 import { SignupView } from "../signup-view/signup-view";
 import {NavigationBar} from "../navbar-view/navbar-view";
 import { ProfileView } from "../profile-view/profile-view";
+import { MovieFilter } from "../movie-filter/movie-filter";
 import {Row, Col, Button} from 'react-bootstrap';
 import { Routes, Route, Navigate, BrowserRouter } from 'react-router-dom';
 // useDispatch to dispatch action creators, useSelector to get states
@@ -25,7 +26,7 @@ export const MainView = ()=>{
     
     
     // access the state of movies and user via store
-    const movies = useSelector((state) => state.movies);
+    const movies = useSelector((state) => state.movies.list);
     const user = useSelector((state)=>state.user);
     const token = useSelector((state)=>state.token);
 
@@ -156,6 +157,7 @@ export const MainView = ()=>{
                                         </Col>
                                 ) : (
                                     <>
+                                        
                                         {movies.map((movie)=>(
                                             <Col className = "mb-4" key = {movie.key} md={3}>
                                                 <MovieCard 

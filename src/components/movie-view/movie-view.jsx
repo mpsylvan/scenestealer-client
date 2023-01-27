@@ -13,7 +13,7 @@ export const MovieView = ()=>{
 
     const user = useSelector((state)=>state.user);
 
-    const movies = useSelector((state) => state.movies);
+    const movies = useSelector((state) => state.movies.list);
 
     const movie = movies.find((m)=> m.key === movieID);
     
