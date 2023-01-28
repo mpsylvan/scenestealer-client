@@ -4,7 +4,6 @@ import {Link} from 'react-router-dom';
 import {Button, Card, Figure, Form} from 'react-bootstrap';
 import {Container, Row, Col} from 'react-bootstrap';
 import {UserInfo} from "./user-info";
-import {UpdateUser} from "./update-user";
 import { FavoritesView } from './favorite-movies'; // I"LL DEAL WITH YOU LATER !
 import { useSelector, useDispatch } from 'react-redux';
 import { setUser } from "../../redux/reducers/users/user";
@@ -128,9 +127,9 @@ export const ProfileView = ()=>{
                                 <h4>User Info: </h4>
                             </Col>
                             <UserInfo 
-                            username={user.Username}
-                            email = {user.Email}
-                            handleDeregister = {handleDeregister}
+                                username={user.Username}
+                                email = {user.Email}
+                                handleDeregister = {handleDeregister}
                             />
                         </Card.Body>
                     </Card>
