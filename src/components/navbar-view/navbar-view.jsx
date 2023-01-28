@@ -6,6 +6,7 @@ import { setUser, setToken} from "../../redux/reducers/users/user";
 
 
 export const NavigationBar = ()=>{
+    // access reducers for updating user/token if Logout clicked
     const dispatch = useDispatch();
     const user = useSelector((state)=>state.user.user);
     return (
