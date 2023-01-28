@@ -22,7 +22,7 @@ export const MovieView = ()=>{
 
     let similarMovies = movies.filter((m)=>m.genre.Name === movie.genre.Name && m.title !== movie.title );   
     
-    const AddFavorite = (id, title) => {
+    const AddFavorite = (id) => {
             fetch(`https://scenestealer.herokuapp.com/users/${user.Username}/favorites/${id}`,
                 {
                     method: "POST",
@@ -32,6 +32,7 @@ export const MovieView = ()=>{
                 if(data.newUser){
                     localStorage.setItem('user', JSON.stringify(data.newUser));
                     dispatch(setUser(data.newUser));
+
                 }else{
                     alert('unable to add movie to favorites.')
                     window.location.reload();
