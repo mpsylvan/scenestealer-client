@@ -46,7 +46,7 @@ export const MovieView = ()=>{
     return (
         <Container>
             <Row style = {{justifyContent: 'center'}}>
-                <Card style={{width: "20rem"}}>
+                <Card style={{ border: "none", borderRadius: "5px", boxShadow: "1px 1px 10px 2px", width: "20rem"}}>
                     <Card.Img variant="top" src={movie.image}/>
                     <Card.Body>
                         <Card.Title>{movie.title}</Card.Title>
