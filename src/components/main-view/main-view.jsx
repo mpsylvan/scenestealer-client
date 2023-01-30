@@ -21,8 +21,6 @@ export const MainView = ()=>{
     const storedToken = localStorage.getItem("token");
     // state variables and their setters used for persisting authentication and presenting movie data and click states. 
     const dispatch = useDispatch(); 
-
-
     
     // access the state of movies and user via store
     const user = useSelector((state)=>state.user.user);
