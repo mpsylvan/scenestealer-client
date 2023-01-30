@@ -121,7 +121,7 @@ export const ProfileView = ()=>{
             </Row>
             <Row style={{alignItems:"center"}}>
                 <Col xs={12} sm={4}>
-                    <Card>
+                    <Card style={{ border: "none", borderRadius: "5px", boxShadow: "1px 1px 10px 2px"}}>
                         <Card.Body>
                              <Col  className="mb-100" md ={12}>
                                 <h4>User Info: </h4>
@@ -135,7 +135,7 @@ export const ProfileView = ()=>{
                     </Card>
                 </Col>
                 <Col xs={12} sm={8}>
-            <Card>
+            <Card style={{ border: "none", borderRadius: "5px", boxShadow: "1px 1px 10px 2px"}}>
                 
                 <Card.Body>
                     <h4>Update your Profile:</h4>
