@@ -12,6 +12,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { setMovies } from "../../redux/reducers/movies";
 import { setUser, setToken} from "../../redux/reducers/users/user";
 import { MoviesList } from "../movies-list/movies-list";
+import { saveState } from '../../localStorage';
+import { store } from "../../redux/store";
 
 
 
@@ -19,15 +21,15 @@ export const MainView = ()=>{
     //uses local storage to access user/token items set via a successful login and stores them as variables to persist auth state. 
     const storedUser = JSON.parse(localStorage.getItem("user"));
     const storedToken = localStorage.getItem("token");
-    // state variables and their setters used for persisting authentication and presenting movie data and click states. 
+
+    // dispatch to hook into store reducers
     const dispatch = useDispatch(); 
     
-    // access the state of movies and user via store
+    // assign variables of user/token to stored state
     const user = useSelector((state)=>state.user.user);
     const token = useSelector((state)=>state.user.token);
+
     
-
-
     // if jwt persists in local storage, use it to make fetch request to grab all movies, if it doesn't skip the use effect. 
     useEffect(()=>{
         if(!token){

@@ -2,17 +2,16 @@ import React from "react";
 import {useState} from "react";
 import {Form} from 'react-bootstrap';
 import {Button} from 'react-bootstrap';
-import {useDispatch } from "react-redux";
+import {useDispatch} from "react-redux";
 import { setUser, setToken} from "../../redux/reducers/users/user";
 
 
 
 
 export const LoginView = () => {
+    // state variable for syncing login data based on real time input
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-
-  
 
     const dispatch = useDispatch();
 

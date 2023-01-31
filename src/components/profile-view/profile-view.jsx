@@ -27,7 +27,7 @@ export const ProfileView = ()=>{
     const favMovies = movies.filter((movie) => user.FavoriteMovies.includes(movie.key));
 
 
-
+    
     const removeFav = (id) => {
             fetch(`https://scenestealer.herokuapp.com/users/${user.Username}/favorites/${id}`,
                 {
@@ -48,7 +48,7 @@ export const ProfileView = ()=>{
             }).catch((e)=>console.log(e));
         }
     
-    const handleSubmit = (e)=>{
+    const handleUserUpdate = (e)=>{
         
         e.preventDefault();
         
@@ -139,7 +139,7 @@ export const ProfileView = ()=>{
                 
                 <Card.Body>
                     <h4>Update your Profile:</h4>
-                    <Form onSubmit={ (e) => handleSubmit(e)}>
+                    <Form onSubmit={ (e) => handleUserUpdate(e)}>
                         <Form.Group>
                             <Form.Label className="m-1">Username</Form.Label>
                             <Form.Control

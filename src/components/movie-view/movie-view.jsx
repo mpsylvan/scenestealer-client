@@ -96,31 +96,4 @@ MovieView.propTypes = {
     // onBackClick : PropTypes.func.isRequired,
     // onDirectorClick: PropTypes.func.isRequired,
 }
-        // <div>
-        //     <div>
-        //         <img src= {movie.image} alt="" />
-        //     </div>
-        //     <div>
-        //         <span> Title: </span>
-        //         <span> {movie.title} </span>
-        //     </div>
-        //     <div>
-        //         <span>Director: </span>
-        //         <span className ='director' onClick ={onDirectorClick} >{movie.director.Name}</span>
-        //     </div>
-        //     <div>
-        //         <span>Studio: </span>
-        //         <span>{movie.studio}</span>
-        //     </div>
-        //     <div>
-        //         <span>Released: </span>
-        //         <span>{movie.releaseYear}</span>
-        //     </div>
-        //     <div>
-        //         <span>Description: </span>
-        //         <span>{movie.desc}</span>
-        //     </div>
-        //     <div>
-        //         <span>Genre: </span>
-        //         <span>{movie.genre.Name}</span>
-        //     </div>
+      

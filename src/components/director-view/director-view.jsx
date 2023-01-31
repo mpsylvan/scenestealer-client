@@ -9,9 +9,9 @@ export const DirectorView = ()=>{
 
     const {directorName} = useParams();
 
-    let movies = useSelector((state)=>state.movies.list);
+    const movies = useSelector((state)=>state.movies.list);
 
-    let movie = movies.find((m)=>m.director.Name === directorName);
+    const movie = movies.find((m)=>m.director.Name === directorName);
     
     return(
         <>
@@ -32,13 +32,3 @@ export const DirectorView = ()=>{
                 
 }
 
-// DirectorView.propTypes = {
-//     movie: PropTypes.shape({
-//         director: PropTypes.shape({
-//             Name: PropTypes.string.isRequired,
-//             Bio : PropTypes.string.isRequired,
-//             Nationality: PropTypes.string.isRequired,
-//         }).isRequired,
-//     }) , 
-//     onBackClick: PropTypes.func.isRequired,
-// };
