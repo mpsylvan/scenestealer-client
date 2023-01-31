@@ -16,8 +16,10 @@ export const MovieView = ()=>{
     const movies = useSelector((state) => state.movies.list);
 
     const movie = movies.find((m)=> m.key === movieID);
-    
 
+   
+    
+    
     const dispatch = useDispatch();
 
     let similarMovies = movies.filter((m)=>m.genre.Name === movie.genre.Name && m.title !== movie.title );   
