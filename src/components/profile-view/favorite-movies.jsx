@@ -7,8 +7,8 @@ import './profile-view.scss'
 export const FavoritesView = ({favMovies, removeFav}) => {
     
     return (
-        <Card>
-            <Card.Body>
+        <Card style={{ border: "none", borderRadius: "5px", boxShadow: "1px 1px 10px 2px"}}>
+            <Card.Body >
                 <Row>
                     {favMovies.length === 0 ?(
                         <h3>You have no movies in your favorites. </h3>

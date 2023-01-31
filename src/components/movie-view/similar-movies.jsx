@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 export const SimilarMovies = (({similarMovies}) =>{
 
     return (
-        <Card>
+        <Card style={{ border: "none", borderRadius: "5px", boxShadow: "1px 1px 10px 2px"}}>
             <Card.Body>
                 <Row>
                     {similarMovies.length === 0 ?(

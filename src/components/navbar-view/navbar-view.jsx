@@ -1,9 +1,14 @@
 import React from "react";
 import {Navbar, Container, Nav} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
+import { useSelector, useDispatch } from "react-redux";
+import { setUser, setToken} from "../../redux/reducers/users/user";
 
 
-export const NavigationBar = ({user, onLoggedOut})=>{
+export const NavigationBar = ()=>{
+    // access reducers for updating user/token if Logout clicked
+    const dispatch = useDispatch();
+    const user = useSelector((state)=>state.user.user);
     return (
         <Navbar bg="light" expand="lg">
             <Container>
@@ -23,7 +28,7 @@ export const NavigationBar = ({user, onLoggedOut})=>{
                             <>
                                 <Nav.Link as={Link} to="/"> Home</Nav.Link>
                                 <Nav.Link as ={Link} to ="/profile">Profile</Nav.Link>
-                                <Nav.Link as={Link} onClick = {onLoggedOut}> Logout </Nav.Link>
+                                <Nav.Link as={Link} onClick={()=>dispatch(setUser(null), dispatch(setToken(null)), localStorage.clear())} > Logout </Nav.Link>
                             </>
                         )}
                     </Nav>

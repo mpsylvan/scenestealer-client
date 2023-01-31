@@ -2,12 +2,19 @@ import React from "react";
 import {useState} from "react";
 import {Form} from 'react-bootstrap';
 import {Button} from 'react-bootstrap';
+import {useDispatch} from "react-redux";
+import { setUser, setToken} from "../../redux/reducers/users/user";
 
 
 
-export const LoginView = ({onLoggedIn}) => {
+
+export const LoginView = () => {
+    // state variable for syncing login data based on real time input
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+
+    const dispatch = useDispatch();
+
 
     const handleSubmit = (event) => {
         // prevents the default behavior of the form which is to reload the entire page
@@ -31,7 +38,9 @@ export const LoginView = ({onLoggedIn}) => {
             if(data.user){
                 localStorage.setItem("user", JSON.stringify(data.user));
                 localStorage.setItem("token", data.token);
-                onLoggedIn(data.user, data.token);
+                dispatch(setUser(data.user));
+                dispatch(setToken(data.token));
+                
             }else{
                 alert('could not find such a user')
             }

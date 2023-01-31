@@ -3,14 +3,28 @@ import { Container, Button, Card, Row, Col} from 'react-bootstrap';
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
 import { SimilarMovies } from './similar-movies';
+import { useSelector, useDispatch } from 'react-redux';
+import { setUser } from "../../redux/reducers/users/user";
 import './movie-view.scss';
 
-export const MovieView = ({movies, user})=>{
+export const MovieView = ()=>{
+    
     const {movieID} = useParams();
-    const movie = movies.find((m)=> m.key === movieID);
+
+    const user = useSelector((state)=>state.user.user);
+
+    const movies = useSelector((state) => state.movies.list);
+
+    const movie = movies?.find((m)=> m.key === movieID);
+
+   
+    
+    
+    const dispatch = useDispatch();
 
     let similarMovies = movies.filter((m)=>m.genre.Name === movie.genre.Name && m.title !== movie.title );   
-    const AddFavorite = (id, title) => {
+    
+    const AddFavorite = (id) => {
             fetch(`https://scenestealer.herokuapp.com/users/${user.Username}/favorites/${id}`,
                 {
                     method: "POST",
@@ -19,7 +33,8 @@ export const MovieView = ({movies, user})=>{
             ).then((response)=> response.json()).then((data)=>{
                 if(data.newUser){
                     localStorage.setItem('user', JSON.stringify(data.newUser));
-                    window.location.reload();
+                    dispatch(setUser(data.newUser));
+
                 }else{
                     alert('unable to add movie to favorites.')
                     window.location.reload();
@@ -29,11 +44,11 @@ export const MovieView = ({movies, user})=>{
             })
         }
 
-
-    return (
+    
+    return movie && (
         <Container>
             <Row style = {{justifyContent: 'center'}}>
-                <Card style={{width: "20rem"}}>
+                <Card style={{ border: "none", borderRadius: "5px", boxShadow: "1px 1px 10px 2px", width: "20rem"}}>
                     <Card.Img variant="top" src={movie.image}/>
                     <Card.Body>
                         <Card.Title>{movie.title}</Card.Title>
@@ -83,31 +98,4 @@ MovieView.propTypes = {
     // onBackClick : PropTypes.func.isRequired,
     // onDirectorClick: PropTypes.func.isRequired,
 }
-        // <div>
-        //     <div>
-        //         <img src= {movie.image} alt="" />
-        //     </div>
-        //     <div>
-        //         <span> Title: </span>
-        //         <span> {movie.title} </span>
-        //     </div>
-        //     <div>
-        //         <span>Director: </span>
-        //         <span className ='director' onClick ={onDirectorClick} >{movie.director.Name}</span>
-        //     </div>
-        //     <div>
-        //         <span>Studio: </span>
-        //         <span>{movie.studio}</span>
-        //     </div>
-        //     <div>
-        //         <span>Released: </span>
-        //         <span>{movie.releaseYear}</span>
-        //     </div>
-        //     <div>
-        //         <span>Description: </span>
-        //         <span>{movie.desc}</span>
-        //     </div>
-        //     <div>
-        //         <span>Genre: </span>
-        //         <span>{movie.genre.Name}</span>
-        //     </div>
+      

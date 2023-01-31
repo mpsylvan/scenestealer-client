@@ -2,24 +2,32 @@ import React from 'react';
 import { useState } from 'react';
 import {Link} from 'react-router-dom';
 import {Button, Card, Figure, Form} from 'react-bootstrap';
-import {useParams} from 'react-router';
 import {Container, Row, Col} from 'react-bootstrap';
 import {UserInfo} from "./user-info";
-import {UpdateUser} from "./update-user";
 import { FavoritesView } from './favorite-movies'; // I"LL DEAL WITH YOU LATER !
+import { useSelector, useDispatch } from 'react-redux';
+import { setUser } from "../../redux/reducers/users/user";
 
 
-export const ProfileView = ({ user, movies})=>{
+
+
+export const ProfileView = ()=>{
     
     const[username, setUsername] = useState("");
     const[email, setEmail] = useState("");
     const[password, setPassword] = useState("");
     const[birthdate, setBirthdate] = useState("");
 
+    const movies = useSelector((state) => state.movies.list);
+    const user = useSelector((state)=>state.user.user);
+    
+    const dispatch = useDispatch();
+    
+
     const favMovies = movies.filter((movie) => user.FavoriteMovies.includes(movie.key));
 
 
-
+    
     const removeFav = (id) => {
             fetch(`https://scenestealer.herokuapp.com/users/${user.Username}/favorites/${id}`,
                 {
@@ -33,14 +41,14 @@ export const ProfileView = ({ user, movies})=>{
             .then((data)=>{
                 if(data.newUser){
                     localStorage.setItem('user', JSON.stringify(data.newUser));
-                    window.location.reload();
+                    dispatch(setUser(data.newUser));
                 }else{
                     alert('there was an issue removing film.')
                 }
             }).catch((e)=>console.log(e));
         }
     
-    const handleSubmit = (e)=>{
+    const handleUserUpdate = (e)=>{
         
         e.preventDefault();
         
@@ -63,7 +71,7 @@ export const ProfileView = ({ user, movies})=>{
             if(data.newUser){
                 localStorage.setItem("user", JSON.stringify(data.newUser));
                 alert('Update successful')
-                window.location.reload();
+                dispatch(setUser(data.newUser));
             }else{
                 alert(`Unable to process user update, please double check your info`)
             }
@@ -113,25 +121,25 @@ export const ProfileView = ({ user, movies})=>{
             </Row>
             <Row style={{alignItems:"center"}}>
                 <Col xs={12} sm={4}>
-                    <Card>
+                    <Card style={{ border: "none", borderRadius: "5px", boxShadow: "1px 1px 10px 2px"}}>
                         <Card.Body>
                              <Col  className="mb-100" md ={12}>
                                 <h4>User Info: </h4>
                             </Col>
                             <UserInfo 
-                            username={user.Username}
-                            email = {user.Email}
-                            handleDeregister = {handleDeregister}
+                                username={user.Username}
+                                email = {user.Email}
+                                handleDeregister = {handleDeregister}
                             />
                         </Card.Body>
                     </Card>
                 </Col>
                 <Col xs={12} sm={8}>
-            <Card>
+            <Card style={{ border: "none", borderRadius: "5px", boxShadow: "1px 1px 10px 2px"}}>
                 
                 <Card.Body>
                     <h4>Update your Profile:</h4>
-                    <Form onSubmit={ (e) => handleSubmit(e)}>
+                    <Form onSubmit={ (e) => handleUserUpdate(e)}>
                         <Form.Group>
                             <Form.Label className="m-1">Username</Form.Label>
                             <Form.Control

@@ -2,15 +2,18 @@ import PropTypes from 'prop-types';
 import {Button, Card} from 'react-bootstrap';
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 
-export const DirectorView = ({movies})=>{
+export const DirectorView = ()=>{
 
     const {directorName} = useParams();
 
-    let movie = movies.find((m)=>m.director.Name === directorName);
+    const movies = useSelector((state)=>state.movies.list);
+
+    const movie = movies.find((m)=>m.director.Name === directorName);
     
-    return(
+    return movie && (
         <>
             <Card className="mt-2" style={{width:"20rem"}}>
                 <Card.Body style={{borderRadius:"10px"}}>
@@ -29,13 +32,3 @@ export const DirectorView = ({movies})=>{
                 
 }
 
-// DirectorView.propTypes = {
-//     movie: PropTypes.shape({
-//         director: PropTypes.shape({
-//             Name: PropTypes.string.isRequired,
-//             Bio : PropTypes.string.isRequired,
-//             Nationality: PropTypes.string.isRequired,
-//         }).isRequired,
-//     }) , 
-//     onBackClick: PropTypes.func.isRequired,
-// };
