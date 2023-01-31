@@ -18,9 +18,7 @@ import { store } from "../../redux/store";
 
 
 export const MainView = ()=>{
-    //uses local storage to access user/token items set via a successful login and stores them as variables to persist auth state. 
-    const storedUser = JSON.parse(localStorage.getItem("user"));
-    const storedToken = localStorage.getItem("token");
+
 
     // dispatch to hook into store reducers
     const dispatch = useDispatch(); 

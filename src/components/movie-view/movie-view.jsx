@@ -16,9 +16,12 @@ export const MovieView = ()=>{
     const movies = useSelector((state) => state.movies.list);
 
     const movie = movies?.find((m)=> m.key === movieID);
-
-   
     
+    const favorited = user.FavoriteMovies.includes(movie.key);
+    console.log("favorited?", favorited);
+    
+  
+
     
     const dispatch = useDispatch();
 
@@ -43,11 +46,51 @@ export const MovieView = ()=>{
                 console.log(e);
             })
         }
+    const removeFav = (id) => {
+        fetch(`https://scenestealer.herokuapp.com/users/${user.Username}/favorites/${id}`,
+            {
+                method: "PUT",
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('token')}`, 
+                    "Content-Type": "application/json",
+                },
+            }  
+        ).then((response)=> response.json())
+        .then((data)=>{
+            if(data.newUser){
+                localStorage.setItem('user', JSON.stringify(data.newUser));
+                dispatch(setUser(data.newUser));
+            }else{
+                alert('there was an issue removing film.')
+            }
+        }).catch((e)=>console.log(e));
+    }
 
-    
-    return movie && (
+
+    return movie.key && (
         <Container>
             <Row style = {{justifyContent: 'center'}}>
+                {favorited?(
+                    <Card style={{ border: "none", borderRadius: "5px", boxShadow: "1px 1px 10px 2px", width: "20rem"}}>
+                    <Card.Img variant="top" src={movie.image}/>
+                    <Card.Body>
+                        <Card.Title>{movie.title}</Card.Title>
+                        <Link to={`/directors/${movie.director.Name}`}>
+                            <Card.Text className='director'><strong>Director: </strong>{movie.director.Name}</Card.Text>
+                        </Link>
+                        <Card.Text><strong>Released:  </strong> {movie.releaseYear}</Card.Text>
+                        <Card.Text><strong>Studio: </strong> {movie.studio}</Card.Text>
+                        <Card.Text><strong>Synopsis:  </strong> {movie.desc}</Card.Text>
+                        <Card.Text><strong>Genre: </strong> {movie.genre.Name}</Card.Text>
+                        <div style={{display:'flex', justifyContent: 'center'}}>
+                            <Button variant = "info" className ="mt-2 movie-card-btn" onClick={()=>removeFav(movie.key)}> Unfavorite</Button>
+                            <Link to={"/"}>
+                                <Button className="mt-2 movie-card-btn" >Back to Movies</Button>
+                            </Link>
+                        </div>
+                    </Card.Body>
+                    </Card>
+                ):(
                 <Card style={{ border: "none", borderRadius: "5px", boxShadow: "1px 1px 10px 2px", width: "20rem"}}>
                     <Card.Img variant="top" src={movie.image}/>
                     <Card.Body>
@@ -60,13 +103,14 @@ export const MovieView = ()=>{
                         <Card.Text><strong>Synopsis:  </strong> {movie.desc}</Card.Text>
                         <Card.Text><strong>Genre: </strong> {movie.genre.Name}</Card.Text>
                         <div style={{display:'flex', justifyContent: 'center'}}>
-                            <Button className ="mt-2 movie-card-btn" onClick={()=>AddFavorite(movie.key, movie.title)}> Add to Favorites</Button>
+                            <Button className ="mt-2 movie-card-btn" onClick={()=>AddFavorite(movie.key)}> Add to Favorites</Button>
                             <Link to={"/"}>
                                 <Button className="mt-2 movie-card-btn" >Back to Movies</Button>
                             </Link>
                         </div>
                     </Card.Body>
                 </Card>
+                )}
             </Row>
             <Row>
                 <Col>
