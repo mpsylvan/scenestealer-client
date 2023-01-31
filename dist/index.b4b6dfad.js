@@ -27356,7 +27356,7 @@ const MovieView = ()=>{
     const { movieID  } = (0, _reactRouter.useParams)();
     const user = (0, _reactRedux.useSelector)((state)=>state.user.user);
     const movies = (0, _reactRedux.useSelector)((state)=>state.movies.list);
-    const movie = movies.find((m)=>m.key === movieID);
+    const movie = movies?.find((m)=>m.key === movieID);
     const dispatch = (0, _reactRedux.useDispatch)();
     let similarMovies = movies.filter((m)=>m.genre.Name === movie.genre.Name && m.title !== movie.title);
     const AddFavorite = (id)=>{
@@ -27377,7 +27377,7 @@ const MovieView = ()=>{
             console.log(e);
         });
     };
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Container), {
+    return movie && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Container), {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Row), {
                 style: {
@@ -51435,7 +51435,7 @@ const DirectorView = ()=>{
     const { directorName  } = (0, _reactRouter.useParams)();
     const movies = (0, _reactRedux.useSelector)((state)=>state.movies.list);
     const movie = movies.find((m)=>m.director.Name === directorName);
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+    return movie && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card), {
             className: "mt-2",
             style: {

@@ -15,7 +15,7 @@ export const MovieView = ()=>{
 
     const movies = useSelector((state) => state.movies.list);
 
-    const movie = movies.find((m)=> m.key === movieID);
+    const movie = movies?.find((m)=> m.key === movieID);
 
    
     
@@ -44,8 +44,8 @@ export const MovieView = ()=>{
             })
         }
 
-
-    return (
+    
+    return movie && (
         <Container>
             <Row style = {{justifyContent: 'center'}}>
                 <Card style={{ border: "none", borderRadius: "5px", boxShadow: "1px 1px 10px 2px", width: "20rem"}}>

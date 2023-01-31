@@ -13,7 +13,7 @@ export const DirectorView = ()=>{
 
     const movie = movies.find((m)=>m.director.Name === directorName);
     
-    return(
+    return movie && (
         <>
             <Card className="mt-2" style={{width:"20rem"}}>
                 <Card.Body style={{borderRadius:"10px"}}>
