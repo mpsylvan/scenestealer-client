@@ -6,8 +6,8 @@ const persistedState = loadState();
 const userSlice = createSlice({
   name: "user",
   initialState: {
-    user: persistedState.user ? persistedState.user : null,
-    token: persistedState.token ? persistedState.token : null,
+    user: persistedState ? persistedState.user : null,
+    token: persistedState ? persistedState.token : null,
   },
   reducers: {
     setUser: (state, action) => {
