@@ -12076,7 +12076,8 @@ button.btn-link {
 }
 
 .movie-card-btn {
-  margin: 8px;
+  margin: auto;
+  display: block;
 }
 
 /*# sourceMappingURL=index.ce1d6491.css.map */
