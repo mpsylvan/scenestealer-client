@@ -40,10 +40,10 @@ export const MovieCard = ({movie}) =>{
             <Card.Body style={{borderRadius: "5px"}}>
                 <Card.Title>{movie.title}</Card.Title>
                 <Card.Text>({movie.releaseYear})</Card.Text>
-                <Button variant = "info" className ="mt-2 movie-card-btn" onClick={()=>AddFavorite(movie?.key)}><FontAwesomeIcon icon={faPlus}/> Favorite</Button>
                  <Link to ={`/movies/${encodeURIComponent(movie.key)}`}>
                     <Button variant="link"> Open </Button>
                  </Link>
+                <Button variant = "info" className ="mt-2 movie-card-btn" onClick={()=>AddFavorite(movie?.key)}><FontAwesomeIcon icon={faPlus}/> to Favorites</Button>
             </Card.Body>
         </Card>
     );

@@ -83,7 +83,7 @@ export const MovieView = ()=>{
                             {user.FavoriteMovies.includes(movie.key)?
                             (<Button  variant = "warning" className ="mt-2 movie-card-btn" onClick={()=>removeFav(movie?.key)}>Remove Favorite</Button>) 
                                 :
-                            (<Button variant = "info" className ="mt-2 movie-card-btn" onClick={()=>AddFavorite(movie?.key)}><FontAwesomeIcon icon={faPlus}/> Favorite</Button>)}
+                            (<Button variant = "info" className ="mt-2 movie-card-btn" onClick={()=>AddFavorite(movie?.key)}><FontAwesomeIcon icon={faPlus}/> to Favorites</Button>)}
                             <Link to={"/"}>
                                 <Button className="mt-2 movie-card-btn" >Back to Movies</Button>
                             </Link>
