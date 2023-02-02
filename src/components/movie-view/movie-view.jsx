@@ -4,8 +4,11 @@ import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
 import { SimilarMovies } from './similar-movies';
 import { useSelector, useDispatch } from 'react-redux';
-import { setUser } from "../../redux/reducers/users/user";
+import {setUser} from "../../redux/reducers/users/user"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faX, faPlus} from '@fortawesome/free-solid-svg-icons'
 import './movie-view.scss';
+
 
 export const MovieView = ()=>{
     
@@ -15,13 +18,8 @@ export const MovieView = ()=>{
 
     const movies = useSelector((state) => state.movies.list);
 
-    const movie = movies?.find((m)=> m.key === movieID);
-    
-    const favorited = user.FavoriteMovies.includes(movie.key);
-    console.log("favorited?", favorited);
-    
-  
-
+    const movie = movies.find((m)=> m.key === movieID);
+    console.log(movie);
     
     const dispatch = useDispatch();
 
@@ -66,51 +64,33 @@ export const MovieView = ()=>{
         }).catch((e)=>console.log(e));
     }
 
-
-    return movie.key && (
+    return movie && (
         <Container>
             <Row style = {{justifyContent: 'center'}}>
-                {favorited?(
+               
                     <Card style={{ border: "none", borderRadius: "5px", boxShadow: "1px 1px 10px 2px", width: "20rem"}}>
-                    <Card.Img variant="top" src={movie.image}/>
+                    <Card.Img variant="top" src={movie?.image}/>
                     <Card.Body>
                         <Card.Title>{movie.title}</Card.Title>
-                        <Link to={`/directors/${movie.director.Name}`}>
-                            <Card.Text className='director'><strong>Director: </strong>{movie.director.Name}</Card.Text>
+                        <Link to={`/directors/${movie?.director.Name}`}>
+                            <Card.Text className='director'><strong>Director: </strong>{movie?.director.Name}</Card.Text>
                         </Link>
-                        <Card.Text><strong>Released:  </strong> {movie.releaseYear}</Card.Text>
-                        <Card.Text><strong>Studio: </strong> {movie.studio}</Card.Text>
-                        <Card.Text><strong>Synopsis:  </strong> {movie.desc}</Card.Text>
-                        <Card.Text><strong>Genre: </strong> {movie.genre.Name}</Card.Text>
+                        <Card.Text><strong>Released:  </strong> {movie?.releaseYear}</Card.Text>
+                        <Card.Text><strong>Studio: </strong> {movie?.studio}</Card.Text>
+                        <Card.Text><strong>Synopsis:  </strong> {movie?.desc}</Card.Text>
+                        <Card.Text><strong>Genre: </strong> {movie?.genre.Name}</Card.Text>
                         <div style={{display:'flex', justifyContent: 'center'}}>
-                            <Button variant = "info" className ="mt-2 movie-card-btn" onClick={()=>removeFav(movie.key)}> Unfavorite</Button>
+                            {user.FavoriteMovies.includes(movie.key)?
+                            (<Button  variant = "warning" className ="mt-2 movie-card-btn" onClick={()=>removeFav(movie?.key)}>Remove Favorite</Button>) 
+                                :
+                            (<Button variant = "info" className ="mt-2 movie-card-btn" onClick={()=>AddFavorite(movie?.key)}><FontAwesomeIcon icon={faPlus}/> Favorite</Button>)}
                             <Link to={"/"}>
                                 <Button className="mt-2 movie-card-btn" >Back to Movies</Button>
                             </Link>
                         </div>
                     </Card.Body>
                     </Card>
-                ):(
-                <Card style={{ border: "none", borderRadius: "5px", boxShadow: "1px 1px 10px 2px", width: "20rem"}}>
-                    <Card.Img variant="top" src={movie.image}/>
-                    <Card.Body>
-                        <Card.Title>{movie.title}</Card.Title>
-                        <Link to={`/directors/${movie.director.Name}`}>
-                            <Card.Text className='director'><strong>Director: </strong>{movie.director.Name}</Card.Text>
-                        </Link>
-                        <Card.Text><strong>Released:  </strong> {movie.releaseYear}</Card.Text>
-                        <Card.Text><strong>Studio: </strong> {movie.studio}</Card.Text>
-                        <Card.Text><strong>Synopsis:  </strong> {movie.desc}</Card.Text>
-                        <Card.Text><strong>Genre: </strong> {movie.genre.Name}</Card.Text>
-                        <div style={{display:'flex', justifyContent: 'center'}}>
-                            <Button className ="mt-2 movie-card-btn" onClick={()=>AddFavorite(movie.key)}> Add to Favorites</Button>
-                            <Link to={"/"}>
-                                <Button className="mt-2 movie-card-btn" >Back to Movies</Button>
-                            </Link>
-                        </div>
-                    </Card.Body>
-                </Card>
-                )}
+                
             </Row>
             <Row>
                 <Col>
