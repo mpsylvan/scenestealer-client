@@ -5,7 +5,8 @@ $primary: #09b67c;
 $color: #91dde7;
 $kaffeesatz: 'Yanone Kaffeesatz',sans-serif;
 $card-bg : #375c79;
-@import 'bootstrap/scss/bootstrap.scss';
+@import '~bootstrap/scss/bootstrap.scss';
+@import "../node_modules/bootstrap/scss/bootstrap";
 
 
 
