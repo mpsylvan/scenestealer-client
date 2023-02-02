@@ -12,8 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setMovies } from "../../redux/reducers/movies";
 import { setUser, setToken} from "../../redux/reducers/users/user";
 import { MoviesList } from "../movies-list/movies-list";
-import { saveState } from '../../localStorage';
-import { store } from "../../redux/store";
+
 
 
 
