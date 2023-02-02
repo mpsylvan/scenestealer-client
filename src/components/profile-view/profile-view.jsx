@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 import {Button, Card, Figure, Form} from 'react-bootstrap';
 import {Container, Row, Col} from 'react-bootstrap';
 import {UserInfo} from "./user-info";
-import { FavoritesView } from './favorite-movies'; // I"LL DEAL WITH YOU LATER !
+import { FavoritesView } from './favorite-movies'; 
 import { useSelector, useDispatch } from 'react-redux';
 import { setUser } from "../../redux/reducers/users/user";
 
@@ -13,13 +13,13 @@ import { setUser } from "../../redux/reducers/users/user";
 
 export const ProfileView = ()=>{
     
-    const[username, setUsername] = useState("");
-    const[email, setEmail] = useState("");
-    const[password, setPassword] = useState("");
-    const[birthdate, setBirthdate] = useState("");
-
     const movies = useSelector((state) => state.movies.list);
     const user = useSelector((state)=>state.user.user);
+    
+    const[username, setUsername] = useState(user.Username? user.Username: "");
+    const[email, setEmail] = useState(user.Email? user.Email: "");
+    const[password, setPassword] = useState("");
+    const[birthdate, setBirthdate] = useState(user.Birthdate? user.Birthdate: "");
     
     const dispatch = useDispatch();
     
@@ -129,6 +129,7 @@ export const ProfileView = ()=>{
                             <UserInfo 
                                 username={user.Username}
                                 email = {user.Email}
+                                birthdate = {user.Birthdate}
                                 handleDeregister = {handleDeregister}
                             />
                         </Card.Body>

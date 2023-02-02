@@ -12,15 +12,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { setMovies } from "../../redux/reducers/movies";
 import { setUser, setToken} from "../../redux/reducers/users/user";
 import { MoviesList } from "../movies-list/movies-list";
-import { saveState } from '../../localStorage';
-import { store } from "../../redux/store";
+
 
 
 
 export const MainView = ()=>{
-    //uses local storage to access user/token items set via a successful login and stores them as variables to persist auth state. 
-    const storedUser = JSON.parse(localStorage.getItem("user"));
-    const storedToken = localStorage.getItem("token");
+
 
     // dispatch to hook into store reducers
     const dispatch = useDispatch(); 
