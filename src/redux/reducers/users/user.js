@@ -1,13 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { loadState } from "../../../localStorage";
+import { loadState } from "../../../localstorage";
 
 const persistedState = loadState();
 
 const userSlice = createSlice({
   name: "user",
   initialState: {
-    user: persistedState.user? persistedState.user: null,
-    token: persistedState.token? persistedState.token: null,
+    user: persistedState.user ? persistedState.user : null,
+    token: persistedState.token ? persistedState.token : null,
   },
   reducers: {
     setUser: (state, action) => {
