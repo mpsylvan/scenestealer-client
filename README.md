@@ -20,7 +20,7 @@ Deployment via Netlify https://scenestealer.netlify.app
 - React form validation
 - Fetch API
 - Authorization Bearer Headings
-- React Bootstrap Elements (<Card>, <Button>, <Form> )
+- React Bootstrap Elements (Card, Button, Form )
 - React Bootstrap Grid
 - PropTypes for stable prop extraction
 - Client side routing with React Router
