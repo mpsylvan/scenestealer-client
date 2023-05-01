@@ -19,7 +19,7 @@ Deployment via Netlify https://scenestealer.netlify.app
 - Sensible execution of latest React 18 hook features including useEffects.
 - React form validation
 - Fetch API
-- Authorization Bearer Headings
+- JSON Web Token parsed and including in requests
 - React Bootstrap Elements (Card, Button, Form )
 - React Bootstrap Grid
 - PropTypes for stable prop extraction
