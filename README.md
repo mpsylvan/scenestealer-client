@@ -2,7 +2,7 @@
 
 ## Description
 
-React front end for interfacing with Scenestealer rest API [ https://github.com/mpsylvan/movie-app ]
+React front end for interfacing with Scenestealer movies rest API [ https://github.com/mpsylvan/movie-app ]
 
 Clean, accessible and intuitive UI Elements
 
