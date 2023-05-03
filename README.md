@@ -14,7 +14,7 @@ Deployment via Netlify https://scenestealer.netlify.app
 
 - Functional component based application
 - State management
-- Search inputs tied to state
+- Movie Search function tied to state
 - Redux toolkit state management through store, slices
 - Sensible execution of latest React 18 hook features including useEffects.
 - React form validation
